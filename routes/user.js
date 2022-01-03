@@ -14,7 +14,8 @@ const auth = require('../middleware/auth');
 router.post('/register',
     body('name', 'Name is Required').notEmpty(),
     body('email', 'PLease Enter a Valid Email').isEmail(),
-    body('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 }), async (req, res) => {
+    body('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 }),
+    async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() })
