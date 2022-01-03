@@ -7,6 +7,7 @@ const { errorHandler, notFoundHandler } = require('./error');
 
 const app = express();
 
+//db conncetion
 connectDb();
 
 app.use(require('./middleware'));

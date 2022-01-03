@@ -9,7 +9,7 @@ const connectDb = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
-        console.log('Mongoose Connected');
+        console.log('Mongoose is Connected');
     } catch (error) {
         console.error(error.message);
         // Exit process with failure
