@@ -5,6 +5,24 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 //model
 const User = require('../models/User');
+//authintication middleware
+const auth = require('../middleware/auth');
+
+
+//@route Get Api
+//@desc Get User By Token
+//@access Private
+router.get('/userbyid', auth, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id);
+        res.send(user)
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({
+            msg: 'Server Error'
+        })
+    }
+})
 
 //@route Post Api
 //@desc Authenticate User

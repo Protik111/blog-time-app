@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const auth = require('../middleware/auth');
 
-//@route Post Api
+//@route POST /register
 //@desc Register User
 //@access Public
 router.post('/register',
@@ -64,6 +64,7 @@ router.post('/register',
 
     });
 
+//testing
 router.get('/auth', auth, (req, res) => {
     res.send('This is protected route')
 })
