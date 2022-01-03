@@ -6,7 +6,8 @@ const ProfileSchema = new mongoose.Schema({
         ref: 'user'
     },
     bio: {
-        type: String
+        type: String,
+        required: true
     },
     company: {
         type: String
@@ -17,7 +18,7 @@ const ProfileSchema = new mongoose.Schema({
     location: {
         type: String
     },
-    exprience: [
+    experience: [
         {
             title: {
                 type: String,
