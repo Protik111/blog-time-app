@@ -6,7 +6,7 @@ const notFoundHandler = (_req, _res, next) => {
 }
 
 //global error handler
-const errorHandler = (error, req, res, next) => {
+const errorHandler = (error, _req, res, _next) => {
     //returning our created error
     if(error.status){
         return res.status(error.status).json({
