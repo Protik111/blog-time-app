@@ -5,7 +5,7 @@ const User = require('../models//User');
 //middleware
 const auth = require('../middleware//auth');
 const { body, validationResult } = require('express-validator');
-const { route } = require('../app/app');
+// const { route } = require('../app/app');
 
 //@route GET user/own
 //@desc get own profile
