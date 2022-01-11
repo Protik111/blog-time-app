@@ -21,8 +21,8 @@ const Navbar = () => {
             <div className={styles.navbar_links_menu}>
                 {
                     toggleMenu ?
-                        <RiCloseLine color="#fff" size={27} onClick={() => setToggleMenu(false)} />
-                        : <RiMenu3Line color="#fff" size={27} onClick={() => setToggleMenu(true)} />
+                        <RiCloseLine color="black" size={27} onClick={() => setToggleMenu(false)} />
+                        : <RiMenu3Line color="black" size={27} onClick={() => setToggleMenu(true)} />
                 }
                 {
                     toggleMenu && (<div className={styles.navbar_links_menu_items}>

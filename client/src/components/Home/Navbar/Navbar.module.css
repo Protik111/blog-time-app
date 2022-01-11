@@ -1,5 +1,6 @@
 :root{
     --color-bg: #dddddd;
+    --color-footer: #dddddd;
 }
 .navbar_container{
     background-color: var(--color-bg);
@@ -9,7 +10,7 @@
 .logo_container img{
     width: 6rem;
     height: 5rem;
-    margin: 1rem 3rem;
+    margin: 1rem 4rem;
 }
 .navbar_links{
     display: flex;
@@ -18,7 +19,7 @@
     margin-right: 4rem;
 }
 .navbar_links_item{
-    padding: 0 1.5rem;
+    padding: 0 1.3rem;
     font-size: 1.3rem;
     /* color: black; */
 }
@@ -34,4 +35,36 @@
 
 .navbar_links_menu{
     display: none;
+}
+.navbar_links_menu_items{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+    
+    text-align: end;
+    background: var(--color-footer);
+    transition: all 0.5s;
+    padding: 2rem;
+    position: absolute;
+    right: 0;
+    top: 6rem;
+    margin-top: 1rem;
+    min-width: 12rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0,0, 0,0.2);
+    z-index: 500;
+}
+@media screen and (max-width: 612px){
+    .navbar_links{
+        display: none;
+    }
+    .navbar_links_menu_items{
+        transition: all 0.3s ease;
+    }
+    .navbar_links_menu{
+        display: flex;
+        margin-top: 2.5rem;
+        margin-right: 1rem;
+    }
 }
