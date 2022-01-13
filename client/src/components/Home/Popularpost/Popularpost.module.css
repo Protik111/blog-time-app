@@ -1,0 +1,29 @@
+.single_popular_post{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #444444;
+}
+.popular_post_image{
+    overflow: hidden;
+}
+.popular_post_image img{
+    width: 70%;
+    height: 70%;
+    transition: transform .3s ease-in-out;
+}
+.popular_post_image:hover img{
+    transform: scale(1.2);
+}
+.popular_date_duration p{
+    font-size: 14px;
+    color: gray;
+}
+.heading_title{
+    font-size: 18px;
+}
+.heading{
+    border-top: 2px solid #444444;
+}
