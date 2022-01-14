@@ -16,6 +16,9 @@
     justify-content: center;
     align-items: center;
 }
+.slider_title{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 .date{
     display: inline-block;
     z-index: 1000;

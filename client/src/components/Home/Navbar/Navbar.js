@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import log from '../../../images/blogs.png';
+import logo from '../../../images/blogs.png';
 import styles from './Navbar.module.css';
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 
@@ -9,7 +9,7 @@ const Navbar = () => {
     return (
         <nav className={styles.navbar_container}>
             <div className={styles.logo_container}>
-                <img src={log} alt="" />
+                <img src={logo} alt="" />
             </div>
             <div className={styles.navbar_links}>
                 <p className={styles.navbar_links_item}><a href="/#home">Home</a></p>

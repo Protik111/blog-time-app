@@ -1,0 +1,27 @@
+.footer_cotainer{
+    background-color: #1B1D1F;
+    width: 100%;
+}
+.footer_logo img{
+    width: 6rem;
+    height: 5rem;
+    margin: 1rem 4rem;
+}
+.footer_title{
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.social_icon{
+    background-color: #F2F2F2;
+    padding: 0 20px;
+}
+.social_icon:hover{
+    background-color: black;
+    color: white;
+}
+
+@media screen and (max-width: 960px){
+    .footer_cotainer{
+        display: none;
+    }
+}
