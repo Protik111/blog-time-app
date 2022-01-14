@@ -2,20 +2,21 @@ import React, { useState } from 'react';
 import logo from '../../../images/blogs.png';
 import styles from './Navbar.module.css';
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     const [toggleMenu, setToggleMenu] = useState(false);
 
     return (
         <nav className={styles.navbar_container}>
-            <div className={styles.logo_container}>
+            <NavLink to="/" className={styles.logo_container}>
                 <img src={logo} alt="" />
-            </div>
+            </NavLink>
             <div className={styles.navbar_links}>
-                <p className={styles.navbar_links_item}><a href="/#home">Home</a></p>
+                <NavLink to="/"><p className={styles.navbar_links_item}><a href="/#home">Home</a></p></NavLink>
                 <p className={styles.navbar_links_item}><a href="/#blogs">Blogs</a></p>
                 <p className={styles.navbar_links_item}><a href="/#about">About</a></p>
-                <p className={styles.navbar_links_item}><a href="/#login">Login</a></p>
+                <NavLink to="/login"><p className={styles.navbar_links_item}><a href="/#login">Login</a></p></NavLink>
             </div>
 
             <div className={styles.navbar_links_menu}>
