@@ -4,7 +4,9 @@ import Navbar from '../Home/Navbar/Navbar';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlert } from '../../redux/action/Alert.action';
+import { registerUser } from '../../redux/action/Auth.action';
 import Alert from '../Alert/Alert';
+import PropTypes from 'prop-types';
 
 const Login = () => {
     const [newUser, setNewUser] = useState(false);
@@ -30,12 +32,7 @@ const Login = () => {
         const { name, email, password, password2 } = userInfo;
 
         if (password === password2) {
-            const newUSer = {
-                name,
-                email,
-                password
-            }
-            console.log('newUSer', newUSer);
+            dispatch(registerUser({name, email, password}))
             // try {
             //     const headersConfig = {
             //         headers: {
@@ -51,7 +48,7 @@ const Login = () => {
             //     console.log(error);
             // }
         } else {
-            dispatch(setAlert('did not matched', 'notMatchedT'));
+            dispatch(setAlert("Password do not matched", "notMatchedP"));
         }
 
     }
@@ -106,5 +103,9 @@ const Login = () => {
         </>
     );
 };
+
+Login.protoTypes = {
+    setAlert: PropTypes.func.isRequired
+}
 
 export default Login;
