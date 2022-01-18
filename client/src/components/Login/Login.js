@@ -8,6 +8,7 @@ import { loginUser } from '../../redux/action/Auth.action';
 import { registerUser } from '../../redux/action/Auth.action';
 import Alert from '../Alert/Alert';
 import PropTypes from 'prop-types';
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
     const [newUser, setNewUser] = useState(false);
@@ -18,7 +19,7 @@ const Login = () => {
         password2: ''
     });
 
-    const { alertReducer } = useSelector((state => state));
+    const { token, isAuthenticated } = useSelector((state => state.authReducer));
     const dispatch = useDispatch();
     // console.log(alertReducer, 'alertReducer');
 
@@ -42,6 +43,10 @@ const Login = () => {
             dispatch(loginUser({email, password}));
         }
 
+    }
+
+    if(isAuthenticated){
+        return (<Navigate to="/dashboard"></Navigate>)
     }
 
     return (

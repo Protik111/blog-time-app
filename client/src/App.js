@@ -8,6 +8,7 @@ import store from './redux/store';
 import setAuthToken from './utils/setAuthToken';
 import { useEffect } from 'react';
 import { loadUser } from './redux/action/Auth.action';
+import Dashboard from './components/Dashboard/Dashboard';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>
