@@ -5,8 +5,19 @@ import { Routes, Route, Link } from "react-router-dom";
 import Login from './components/Login/Login';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import setAuthToken from './utils/setAuthToken';
+import { useEffect } from 'react';
+import { loadUser } from './redux/action/Auth.action';
+
+if(localStorage.token){
+  setAuthToken(localStorage.token);
+}
 
 function App() {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
   return (
     <Provider store={store}>
       <BrowserRouter>

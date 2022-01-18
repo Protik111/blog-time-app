@@ -4,6 +4,7 @@ import Navbar from '../Home/Navbar/Navbar';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlert } from '../../redux/action/Alert.action';
+import { loginUser } from '../../redux/action/Auth.action';
 import { registerUser } from '../../redux/action/Auth.action';
 import Alert from '../Alert/Alert';
 import PropTypes from 'prop-types';
@@ -31,30 +32,17 @@ const Login = () => {
         // console.log(userInfo, 'data');
         const { name, email, password, password2 } = userInfo;
 
-        if (password === password2) {
+        if (newUser && password === password2) {
             dispatch(registerUser({name, email, password}))
-            // try {
-            //     const headersConfig = {
-            //         headers: {
-            //             'Content-Type' : 'application/json'
-            //         }
-            //     }
-            //     const body = JSON.stringify(newUSer);
+        } else if (newUser && password !== password2) {
+            dispatch(setAlert("Password does not match.", "notMatchedP"));
+        }
 
-            //     const response = await axios.post('/api/user/register', body, headersConfig);
-
-            //     console.log(response.data);
-            // } catch (error) {
-            //     console.log(error);
-            // }
-        } else {
-            dispatch(setAlert("Password do not matched", "notMatchedP"));
+        if(!newUser && email && password){
+            dispatch(loginUser({email, password}));
         }
 
     }
-
-
-    // console.log(userInfo);
 
     return (
         <>
@@ -97,7 +85,7 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-            <div className={`${styles.alert_container}  pb-3`}>
+            <div className={`${styles.alert_container} mt5 pb-3`}>
                 <Alert></Alert>
             </div>
         </>
