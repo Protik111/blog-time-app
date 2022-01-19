@@ -64,9 +64,4 @@ router.post('/register',
 
     });
 
-//testing
-router.get('/auth', auth, (req, res) => {
-    res.send('This is protected route')
-})
-
 module.exports = router;

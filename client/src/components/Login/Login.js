@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
 import Navbar from '../Home/Navbar/Navbar';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlert } from '../../redux/action/Alert.action';
 import { loginUser } from '../../redux/action/Auth.action';

@@ -24,10 +24,15 @@ const Navbar = () => {
             <div className={styles.navbar_links}>
                 <NavLink to="/"><p className={styles.navbar_links_item}><a href="/#home">Home</a></p></NavLink>
                 <p className={styles.navbar_links_item}><a href="/#blogs">Blogs</a></p>
-                <p className={styles.navbar_links_item}><a href="/#about">About</a></p>
+                {
+                    isAuthenticated ?
+                    <NavLink to="/dashboard"><p className={styles.navbar_links_item}><a href="">Dashboard</a></p></NavLink>
+                    :
+                    <NavLink to="/dashboard"><p className={styles.navbar_links_item}><a href="#about">About</a></p></NavLink>
+                }
                 {
                     isAuthenticated ? 
-                    <p className={styles.navbar_links_item}><a onClick={handleLogout} href="/#login">Logout</a></p>
+                    <NavLink to="/login"><p className={styles.navbar_links_item}><a onClick={handleLogout} href="">Logout</a></p></NavLink>
                     : 
                     <NavLink to="/login"><p className={styles.navbar_links_item}><a href="/#login">Login</a></p></NavLink>
                 }

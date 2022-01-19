@@ -5,5 +5,6 @@ export const ActionTypes = {
     'AUTH_ERROR': 'AUTH_ERROR',
     'LOGIN_SUCCESS': 'LOGIN_SUCCESS',
     'LOGIN_FAIL': 'LOGIN_FAIL',
-    'LOGOUT': 'LOGOUT'
+    'LOGOUT': 'LOGOUT',
+    'CLEAR_PROFILE': 'CLEAR_PROFILE'
 }

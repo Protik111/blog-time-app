@@ -15,7 +15,7 @@ const authReducer = (state = initialState, {type, payload}) => {
                 user: payload,
                 isAuthenticated: true,
                 loading: false
-            }
+            };
         case ActionTypes.REGISTER_SUCCESS:
         case ActionTypes.LOGIN_SUCCESS:
             localStorage.setItem('token', payload.token)
@@ -24,7 +24,7 @@ const authReducer = (state = initialState, {type, payload}) => {
                 ...payload,
                 isAuthenticated: true,
                 loading: false
-            }
+            };
         case ActionTypes.REGISTER_FAIL:
         case ActionTypes.AUTH_ERROR:
         case ActionTypes.LOGIN_FAIL:
@@ -35,7 +35,7 @@ const authReducer = (state = initialState, {type, payload}) => {
                 token: null,
                 isAuthenticated: false,
                 loading: false
-            }
+            };
         default:
             return state;
     }
