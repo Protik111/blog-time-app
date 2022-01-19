@@ -1,0 +1,10 @@
+.welcome_title{
+    font-weight: bolder;
+}
+.welcome_user{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+.profile_updates{
+    margin: 2px;
+}
