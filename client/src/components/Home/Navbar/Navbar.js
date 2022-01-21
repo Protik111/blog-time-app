@@ -26,15 +26,15 @@ const Navbar = () => {
                 <p className={styles.navbar_links_item}><a href="/#blogs">Blogs</a></p>
                 {
                     isAuthenticated ?
-                    <NavLink to="/dashboard"><p className={styles.navbar_links_item}><a href="">Dashboard</a></p></NavLink>
-                    :
-                    <NavLink to="/dashboard"><p className={styles.navbar_links_item}><a href="#about">About</a></p></NavLink>
+                        <NavLink to="/dashboard"><p className={styles.navbar_links_item}><a href="">Dashboard</a></p></NavLink>
+                        :
+                        <NavLink to="/dashboard"><p className={styles.navbar_links_item}><a href="#about">About</a></p></NavLink>
                 }
                 {
-                    isAuthenticated ? 
-                    <NavLink to="/login"><p className={styles.navbar_links_item}><a onClick={handleLogout} href="">Logout</a></p></NavLink>
-                    : 
-                    <NavLink to="/login"><p className={styles.navbar_links_item}><a href="/#login">Login</a></p></NavLink>
+                    isAuthenticated ?
+                        <NavLink to="/login"><p className={styles.navbar_links_item}><a onClick={handleLogout} href="">Logout</a></p></NavLink>
+                        :
+                        <NavLink to="/login"><p className={styles.navbar_links_item}><a href="/#login">Login</a></p></NavLink>
                 }
             </div>
 
@@ -46,10 +46,20 @@ const Navbar = () => {
                 }
                 {
                     toggleMenu && (<div className={styles.navbar_links_menu_items}>
-                        <p className={styles.navbar_links_item}><a href="">Home</a></p>
-                        <p className={styles.navbar_links_item}><a href="">Blogs</a></p>
-                        <p className={styles.navbar_links_item}><a href="">About</a></p>
-                        <p className={styles.navbar_links_item}><a href="">Login</a></p>
+                        <NavLink to="/"><p className={styles.navbar_links_item}><a href="/#home">Home</a></p></NavLink>
+                        <p className={styles.navbar_links_item}><a href="/#blogs">Blogs</a></p>
+                        {
+                            isAuthenticated ?
+                                <NavLink to="/dashboard"><p className={styles.navbar_links_item}><a href="">Dashboard</a></p></NavLink>
+                                :
+                                <NavLink to="/dashboard"><p className={styles.navbar_links_item}><a href="#about">About</a></p></NavLink>
+                        }
+                        {
+                            isAuthenticated ?
+                                <NavLink to="/login"><p className={styles.navbar_links_item}><a onClick={handleLogout} href="">Logout</a></p></NavLink>
+                                :
+                                <NavLink to="/login"><p className={styles.navbar_links_item}><a href="/#login">Login</a></p></NavLink>
+                        }
                     </div>)
                 }
             </div>

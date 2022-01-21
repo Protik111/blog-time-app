@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import styles from './Dashboard.module.css';
+import PostCount from '../PostCount/PostCount';
+import TotalPosts from '../TotalPosts/TotalPosts';
+import { NavLink } from 'react-router-dom';
 
 const Dashboard = () => {
     useEffect(() => {
@@ -17,7 +20,7 @@ const Dashboard = () => {
     // console.log('profile', profile);
 
     return (
-        <div className="container-fluid p-0">
+        <div className="container-fluid p-0 mb-5">
             <Navbar></Navbar>
             <div className="row">
                 <div className="col-sm-10 offset-sm-2 col-md-5 offset-md-1 mt-5">
@@ -36,13 +39,18 @@ const Dashboard = () => {
                                     </Fragment> :
                                     <Fragment>
                                         <p className={styles.profile_updates}>You've not created your profile.</p>
-                                        <button type="button" className={`${styles.profile_updates} btn btn-outline-secondary`}>Create Profile</button>
+                                        <NavLink to="/createprofile"><button type="button" className={`${styles.profile_updates} btn btn-secondary`}>Create Profile</button></NavLink>
                                     </Fragment>
                             }</Fragment>)
                     }
                 </div>
             </div>
             <hr />
+            {/* <PostCount></PostCount> */}
+            <div className="offset-lg-1 offset-md-1 offset-sm-1 mt-5">
+                <h3>Your Blogs</h3>
+            </div>
+            <TotalPosts></TotalPosts>
         </div>
     );
 };

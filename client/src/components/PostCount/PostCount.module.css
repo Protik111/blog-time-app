@@ -1,0 +1,7 @@
+.count_container{
+    /* border: 1px solid gray; */
+    box-shadow: 1px 1px 15px gray;
+    height: 17vh;
+    background-color: #fffefe;
+    border-radius: 5px;
+}

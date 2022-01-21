@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { loadUser } from './redux/action/Auth.action';
 import Dashboard from './components/Dashboard/Dashboard';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import CreateProfile from './components/CreateProfile/CreateProfile';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -28,6 +29,7 @@ function App() {
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}></Route>
+          <Route path="/createprofile" element={<PrivateRoute><CreateProfile /></PrivateRoute>}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>

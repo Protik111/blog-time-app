@@ -1,0 +1,38 @@
+.totalPosts_container{
+    box-shadow: 1px 1px 15px gray;
+    height: 80vh;
+    background-color: #fffefe;
+    border-radius: 5px;
+    width: 90%;
+}
+.blogPhoto{
+    width: 60%;
+    height: 50vh;
+}
+
+@media screen and (max-width: 900px){
+    .totalPosts_container{
+        height: 63vh;
+        width: 90%;
+    }
+
+    .blogPhoto{
+        width: 80%;
+        height: 40vh;
+    }
+}
+
+
+@media screen and (max-width: 762px){
+    .blogPhoto{
+        width: 60%;
+        height: 40vh;
+    }
+}
+
+@media screen and (max-width: 568px){
+    .blogPhoto{
+        width: 100%;
+        height: 30vh;
+    }
+}
