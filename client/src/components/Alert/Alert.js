@@ -9,7 +9,7 @@ const Alert = () => {
         <div className="mt-2">
             {alertReducer !== null && alertReducer.length > 0 && alertReducer.map(alert =>
                 <div className={`${styles.alert_cotainer}`}>
-                    <p className={`${styles.alertTitle} px-5 py-1`} key={alert.id}>{alert.msg}</p>
+                    <p className={`${styles.alertTitle} ${alert.alertType === 'Pcreated' && styles.alertTitle_success} px-5 py-1`} key={alert.id}>{alert.msg}</p>
                 </div>
             )}
         </div>

@@ -8,6 +8,7 @@ import styles from './Dashboard.module.css';
 import PostCount from '../PostCount/PostCount';
 import TotalPosts from '../TotalPosts/TotalPosts';
 import { NavLink } from 'react-router-dom';
+import Alert from '../Alert/Alert';
 
 const Dashboard = () => {
     useEffect(() => {
@@ -22,6 +23,9 @@ const Dashboard = () => {
     return (
         <div className="container-fluid p-0 mb-5">
             <Navbar></Navbar>
+            <div className="d-flex justify-content-center">
+                <Alert></Alert>
+            </div>
             <div className="row">
                 <div className="col-sm-10 offset-sm-2 col-md-5 offset-md-1 mt-5">
                     <h2 className={styles.welcome_title}>Welcome To Dashboard</h2>
