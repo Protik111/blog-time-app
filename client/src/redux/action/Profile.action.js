@@ -14,16 +14,16 @@ export const getOwnProfile = () => async dispatch => {
 
     } catch (error) {
 
-        
+
         dispatch({
             type: ActionTypes.PROFILE_ERROR,
-            payload: {msg: error.response.statusText, status: error.response.status}
+            payload: { msg: error.response.statusText, status: error.response.status }
         });
     }
 };
 
 //create profile or update
-export const createProfile = (formData, navigate) => async dispatch => {
+export const createProfile = (formData, navigate, update = false) => async dispatch => {
     console.log('formdata from action', formData);
     console.log('create function called');
     try {
@@ -43,9 +43,13 @@ export const createProfile = (formData, navigate) => async dispatch => {
             payload: response.data
         });
 
-        dispatch(setAlert("Profile Created", 'Pcreated'));
+        dispatch(setAlert(update === false ? "Profile Created" : "Profile Updated", 'Pcreated'));
 
-        navigate('/dashboard');
+        if (update === false) {
+            navigate('/dashboard');
+        }else{
+            navigate('/viewprofile')
+        }
 
 
     } catch (error) {
@@ -57,7 +61,7 @@ export const createProfile = (formData, navigate) => async dispatch => {
 
         dispatch({
             type: ActionTypes.PROFILE_ERROR,
-            payload: {msg: error.response.statusText, status: error.response.status}
+            payload: { msg: error.response.statusText, status: error.response.status }
         });
     }
 }

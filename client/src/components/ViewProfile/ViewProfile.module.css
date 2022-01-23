@@ -3,11 +3,11 @@
     border-radius: 5px;
     position: absolute;
     left: 50%;
-    top: 70%;
+    top: 80%;
     transform: translate(-50%, -50%);
     width: 80%;
     box-shadow: 1px 1px 7px rgb(245, 241, 241);
-    height: 90vh;
+    height: 120vh;
 }
 .user_name{
     font-weight: bolder;
@@ -16,4 +16,16 @@
     border-radius: 50%;
     width: 150px;
     height: 150px;
+}
+
+@media screen and (max-width: 638px){
+    .viewTitle{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 538px){
+    .viewTitle{
+        font-size: 14px;
+    }
 }

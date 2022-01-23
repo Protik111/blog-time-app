@@ -39,7 +39,7 @@ const Dashboard = () => {
                             {
                                 profile !== null ?
                                     <Fragment>
-                                        <h6 className="offset-md-1">{profile.bio}</h6>
+                                        <h6 className="m-2">{profile.bio}</h6>
                                         <NavLink to="/viewprofile"><button className="btn btn-secondary offset-md-1">View Profile</button></NavLink>
                                     </Fragment> :
                                     <Fragment>
