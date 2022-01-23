@@ -39,7 +39,8 @@ const Dashboard = () => {
                             {
                                 profile !== null ?
                                     <Fragment>
-                                        <p>Bio : {profile.bio}</p>
+                                        <h6 className="offset-md-1">{profile.bio}</h6>
+                                        <NavLink to="/viewprofile"><button className="btn btn-secondary offset-md-1">View Profile</button></NavLink>
                                     </Fragment> :
                                     <Fragment>
                                         <p className={styles.profile_updates}>You've not created your profile.</p>
