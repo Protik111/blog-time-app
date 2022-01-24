@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../Home/Navbar/Navbar';
 import { AiFillYoutube, AiFillTwitterCircle, AiFillInstagram, AiFillFacebook } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { createProfile } from '../../redux/action/Profile.action';
 import Alert from '../Alert/Alert';
 import { useNavigate } from "react-router-dom";
 import styles from '../CreateProfile/CreateProfile.module.css';
+import { getOwnProfile } from '../../redux/action/Profile.action';
 
 const EditProfile = () => {
     const dispatch = useDispatch();
@@ -14,15 +15,40 @@ const EditProfile = () => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        bio: profile.bio,
-        company: profile.company,
-        website: profile.website,
-        location: profile.location,
-        youtube: profile.social.youtube,
-        twitter: profile.social.twitter,
-        instagram: profile.social.instagram,
-        facebook: profile.social.instagram
+        bio: '',
+        company: '',
+        website: '',
+        location: '',
+        youtube: '',
+        twitter: '',
+        instagram: '',
+        facebook: ''
     });
+
+    
+    useEffect(() => {
+        dispatch(getOwnProfile());
+
+        setFormData({
+            bio: !profile.bio ? '' : profile.bio,
+            company: !profile.company ? '' : profile.company,
+            website: !profile.website ? '' : profile.website,
+            location: !profile.location ? '' : profile.location,
+            youtube: !profile.social ? '' : profile.social.youtube,
+            twitter: !profile.social ? '' : profile.social.twitter,
+            instagram: !profile.social ? '' : profile.social.instagram,
+            facebook: !profile.social ? '' : profile.social.instagram
+        })
+    }, [loading]);
+
+    // if(loading === true){
+    //     return (<div>
+    //         <h3>Loading...</h3>
+    //     </div>)
+    // }
+
+    console.log(formData, 'from edit profile');
+    console.log('profile', profile);
 
     const {
         bio,
@@ -47,7 +73,7 @@ const EditProfile = () => {
     }
 
     return (
-        <div className="container-fluid p-0">
+        <div className="container-fluid p-0 mb-5">
             <Navbar></Navbar>
             <div className="offset-sm-2 offset-md-1 offset-lg-2 mt-4">
                 <h3>Let's Update Profile!</h3>
@@ -74,9 +100,6 @@ const EditProfile = () => {
                         <input onChange={handleChange} value={location} type="text" className="form-control" name="location" id="location" placeholder="Dhaka, Bangladesh" />
                         <label for="location">City and country. <span style={{ color: 'red' }}>(eg. Dhaka, Bangladesh)</span></label>
                     </div>
-
-                    {/* collapse */}
-
 
                     <p>
                         <a className="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
