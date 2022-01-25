@@ -23,7 +23,7 @@ const Dashboard = () => {
     return (
         <div className="container-fluid p-0 mb-5">
             <Navbar></Navbar>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex w-100 justify-content-center">
                 <Alert></Alert>
             </div>
             <div className="row">

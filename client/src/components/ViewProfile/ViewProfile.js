@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { Fragment } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../Home/Navbar/Navbar';
 import styles from './ViewProfile.module.css';
 import blankProfile from '../../images/slides/blank.png';
@@ -12,10 +12,12 @@ import ViewExperience from '../ViewExperience/ViewExperience';
 const ViewProfile = () => {
     const { profile, loading } = useSelector(state => state.profileReducer);
     const { user } = useSelector(state => state.authReducer);
+    const dispatch = useDispatch();
+
     return (
         <div className="container-fluid p-0">
             <Navbar></Navbar>
-            <Alert></Alert>
+
             {/* <div className="d-flex justify-content-center mt-4">
                 <h2>Your Profile</h2>
             </div> */}
@@ -25,6 +27,9 @@ const ViewProfile = () => {
                 </div>
                 <div className="d-flex justify-content-center mt-4">
                     <h2 className={`${styles.user_name} ${styles.viewTitle}`}>{user.name}</h2>
+                </div>
+                <div className="d-flex justify-content-center">
+                    <Alert></Alert>
                 </div>
                 <div className="d-flex justify-content-center">
                     <h5 className={styles.viewTitle}> 🌍 Biography : {profile.bio}</h5>
@@ -58,6 +63,9 @@ const ViewProfile = () => {
                     <div className="d-flex justify-content-center">
                         <NavLink to="/editprofile"><button className="btn btn-secondary">Edit Profile</button></NavLink>
                     </div>
+                    <div className="d-flex justify-content-center mt-2">
+                        <button className="btn btn-danger w-25">Delete Profile</button>
+                    </div>
                 </div> : (<div className="d-flex justify-content-center">
                     <NavLink to="/editprofile"><button className="btn btn-secondary">Add Social Links Or Edit Profile</button></NavLink>
                 </div>)}
@@ -73,7 +81,10 @@ const ViewProfile = () => {
                 </div>
 
                 {profile.experience.length > 0 ? (
-                    <ViewExperience></ViewExperience>
+                    <Fragment>
+                        {/* <Alert></Alert> */}
+                        <ViewExperience></ViewExperience>
+                    </Fragment>
                 ) : (<div className="d-flex justify-content-center">
                     <h5 className={styles.viewTitle}>No Experience Added</h5>
                 </div>)}

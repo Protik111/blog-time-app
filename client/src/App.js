@@ -15,11 +15,11 @@ import ViewProfile from './components/ViewProfile/ViewProfile';
 import EditProfile from './components/EditProfile/EditProfile';
 import AddExperience from './components/AddExperience/AddExperience';
 
-if(localStorage.token){
-  setAuthToken(localStorage.token);
-}
-
 function App() {
+  if(localStorage.token){
+    setAuthToken(localStorage.token);
+  }
+  
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);

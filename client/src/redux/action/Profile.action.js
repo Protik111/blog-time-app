@@ -24,8 +24,6 @@ export const getOwnProfile = () => async dispatch => {
 
 //create profile or update
 export const createProfile = (formData, navigate, update = false) => async dispatch => {
-    console.log('formdata from action', formData);
-    console.log('create function called');
     try {
         const headersConfig = {
             headers: {
@@ -36,7 +34,6 @@ export const createProfile = (formData, navigate, update = false) => async dispa
         // const body = JSON.stringify(formData);
         // console.log('body', body);
         const response = await axios.post('/api/user/create', formData, headersConfig);
-        console.log(response, 'response');
 
         dispatch({
             type: ActionTypes.GET_PROFILE,
@@ -66,6 +63,7 @@ export const createProfile = (formData, navigate, update = false) => async dispa
     }
 }
 
+//add experience
 export const addExperience = (formData, navigate) => async dispatch => {
     try {
         const headersConfig = {
@@ -78,12 +76,12 @@ export const addExperience = (formData, navigate) => async dispatch => {
 
         dispatch({
             type: ActionTypes.ADD_EXPERIENCE,
-            payload: response
+            payload: response.data
         });
 
         dispatch(setAlert('Experience Added', 'Pcreated'));
 
-        navigate('/dashboard');
+        navigate('/viewprofile');
 
     } catch (error) {
         const errors = error.response.data.errors;
@@ -97,3 +95,27 @@ export const addExperience = (formData, navigate) => async dispatch => {
         })
     }
 }
+
+//delete experience
+export const deleteExperience = (id, navigate) => async dispatch => {
+    try {
+        // console.log('Deleted Experience');
+        const response = await axios.delete(`/api/user/experience/${id}`)
+
+        dispatch({
+            type: ActionTypes.DELETE_EXPERIENCE,
+            payload: response.data
+        });
+
+        dispatch(setAlert('Experience Removed', 'notMatchedP'));
+
+        navigate('/viewprofile');
+        console.log('Naviagated');
+
+    } catch (error) {
+        dispatch({
+            type: ActionTypes.PROFILE_ERROR,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
+} 

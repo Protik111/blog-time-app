@@ -46,9 +46,6 @@ const AddExperience = () => {
             <Navbar></Navbar>
             <div className="offset-sm-2 offset-md-1 offset-lg-2 mt-4">
                 <h3>Let's Add Experience!</h3>
-                <div className="w-50 offset-md-1">
-                    <Alert></Alert>
-                </div>
             </div>
 
             <div className={`${styles.create_profile_container} offset-sm-2 offset-md-1 offset-lg-2`}>
@@ -82,7 +79,7 @@ const AddExperience = () => {
                             name="current"
                             checked={current}
                             value={current}
-                            onChange={() => setFormData({...formData, current: !current})}
+                            onChange={() => setFormData({ ...formData, current: !current })}
                         />{' '}
                         Current Job
                     </div>
@@ -114,7 +111,10 @@ const AddExperience = () => {
                         <label for="desciption">Descibe what you did in your workplace.</label>
                     </div>
 
-                
+                    <div className="w-50">
+                        <Alert></Alert>
+                    </div>
+
                     <button className="btn btn-secondary w-25 offset-md-1 mt-4" type="submit">Add Experience</button>
                 </form>
             </div>

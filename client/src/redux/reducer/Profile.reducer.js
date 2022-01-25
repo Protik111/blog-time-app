@@ -12,6 +12,7 @@ const profileReducer = (state = initialState, { type, payload }) => {
     switch(type){
         case ActionTypes.GET_PROFILE:
         case ActionTypes.ADD_EXPERIENCE:
+        case ActionTypes.DELETE_EXPERIENCE:
             return {
                 ...state,
                 profile: payload,
