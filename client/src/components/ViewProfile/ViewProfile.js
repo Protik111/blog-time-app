@@ -7,6 +7,7 @@ import { AiFillYoutube, AiFillTwitterCircle, AiFillInstagram, AiFillFacebook } f
 import { NavLink } from 'react-router-dom';
 import Alert from '../Alert/Alert';
 import ViewExperience from '../ViewExperience/ViewExperience';
+import { deleteProfile } from '../../redux/action/Profile.action';
 
 
 const ViewProfile = () => {
@@ -43,6 +44,17 @@ const ViewProfile = () => {
                     {profile.location ? (<h5 className={styles.viewTitle}> 📍 Your Location : {profile.location}</h5>) :
                         (<h5 className={styles.viewTitle}> 📍 Your Location : Not Added 🚫</h5>)}
                 </div>
+                {!profile.social && <div>
+                    <div className="d-flex justify-content-center">
+                        <NavLink to="/editprofile"><button className="btn btn-secondary"> ✏️ Edit Profile</button></NavLink>
+                    </div>
+                    <div className="d-flex justify-content-center mt-2">
+                        <button onClick={() => dispatch(deleteProfile())} className="btn btn-danger w-25"> 👨‍💼 Delete Account</button>
+                    </div>
+                    <NavLink to='/dashboard' className="d-flex justify-content-center mt-2">
+                        <button className="btn btn-primary w-25"> 🏠 Go To Dashboard</button>
+                    </NavLink>
+                </div>}
                 {profile.social ? <div>
                     <div className="d-flex justify-content-center">
                         {profile.social.facebook ? (<h5 className={styles.viewTitle}> <AiFillFacebook size={30}></AiFillFacebook> Facebook : {profile.social.facebook}</h5>) :
@@ -61,19 +73,22 @@ const ViewProfile = () => {
                             (<h5 className={styles.viewTitle}> <AiFillInstagram size={30}></AiFillInstagram> Instagram : Not Added 🚫</h5>)}
                     </div>
                     <div className="d-flex justify-content-center">
-                        <NavLink to="/editprofile"><button className="btn btn-secondary">Edit Profile</button></NavLink>
+                        <NavLink to="/editprofile"><button className="btn btn-secondary"> ✏️ Edit Profile</button></NavLink>
                     </div>
                     <div className="d-flex justify-content-center mt-2">
-                        <button className="btn btn-danger w-25">Delete Profile</button>
+                        <button onClick={() => dispatch(deleteProfile())} className="btn btn-danger w-25"> 👨‍💼 Delete Account</button>
                     </div>
+                    <NavLink to='/dashboard' className="d-flex justify-content-center mt-2">
+                        <button className="btn btn-primary w-25"> 🏠 Go To Dashboard</button>
+                    </NavLink>
                 </div> : (<div className="d-flex justify-content-center">
-                    <NavLink to="/editprofile"><button className="btn btn-secondary">Add Social Links Or Edit Profile</button></NavLink>
+                    <NavLink to="/editprofile"><button className="btn btn-secondary mt-2">✏️ Add Social Links Or Edit Profile</button></NavLink>
                 </div>)}
                 <hr />
                 <div className="d-flex mb-3">
                     <h2 className="offset-1 offset-md-2 mt-2">Experiences</h2>
                     <NavLink to="/addexperience" className="offset-md-3 w-100">
-                        <button className="btn btn-secondary offset-md-3">Add Experience</button>
+                        <button className="btn btn-secondary offset-md-3 mt-2"> ➕ Add Experience</button>
                     </NavLink>
                     {/* <NavLink to="/addexperience" className="w-100">
                         {profile.experience.length > 0 && <button className="btn btn-secondary offset-md-3">Edit Experience</button>}

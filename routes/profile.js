@@ -137,7 +137,7 @@ router.delete('/delete', auth, async (req, res) => {
 router.put('/experience', [auth,
     body('title', 'Title is Required').not().isEmpty(),
     body('company', 'Company is Required').not().isEmpty(),
-    body('from', 'From is Required').not().isEmpty()
+    body('from', 'From Date is Required').not().isEmpty()
     ], async (req, res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()){

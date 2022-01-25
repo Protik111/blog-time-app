@@ -5,6 +5,7 @@ import Alert from '../Alert/Alert';
 import styles from '../CreateProfile/CreateProfile.module.css';
 import Navbar from '../Home/Navbar/Navbar';
 import { addExperience } from '../../redux/action/Profile.action';
+import { NavLink } from 'react-router-dom';
 
 const AddExperience = () => {
     const dispatch = useDispatch();
@@ -115,8 +116,12 @@ const AddExperience = () => {
                         <Alert></Alert>
                     </div>
 
-                    <button className="btn btn-secondary w-25 offset-md-1 mt-4" type="submit">Add Experience</button>
+                    <button className="btn btn-secondary w-25 mt-4" type="submit">Add Experience</button>
+                    <NavLink to="/viewprofile"><buttton className="btn btn-primary offset-md-1 mt-4">Go Back</buttton></NavLink>
                 </form>
+                <div>
+                    
+                </div>
             </div>
         </div>
     );

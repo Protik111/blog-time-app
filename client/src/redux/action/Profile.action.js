@@ -79,7 +79,7 @@ export const addExperience = (formData, navigate) => async dispatch => {
             payload: response.data
         });
 
-        dispatch(setAlert('Experience Added', 'Pcreated'));
+        dispatch(setAlert('Experience Added.', 'Pcreated'));
 
         navigate('/viewprofile');
 
@@ -107,7 +107,7 @@ export const deleteExperience = (id, navigate) => async dispatch => {
             payload: response.data
         });
 
-        dispatch(setAlert('Experience Removed', 'notMatchedP'));
+        dispatch(setAlert('Experience Removed.', 'notMatchedP'));
 
         navigate('/viewprofile');
         console.log('Naviagated');
@@ -118,4 +118,28 @@ export const deleteExperience = (id, navigate) => async dispatch => {
             payload: { msg: error.response.statusText, status: error.response.status }
         })
     }
-} 
+}
+
+//delete profile and user
+export const deleteProfile = () => async dispatch => {
+    if(window.confirm('Are You Confirm To Delete Your Account? 😮😮')){
+        try {
+            const response = await axios.delete('/api/user/delete');
+
+            dispatch({
+                type: 'ACCOUNT_DELETE'
+            });
+            dispatch({
+                type: 'CLEAR_PROFILE'
+            });
+
+            dispatch(setAlert('Your Account Has Been Permanently Deleted.', 'notMatchedP'))
+
+        } catch (error) {
+            dispatch({
+                type: ActionTypes.PROFILE_ERROR,
+                payload: {msg: error.response.statusText, status: error.response.status}
+            });
+        }
+    }
+}

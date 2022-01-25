@@ -4,7 +4,7 @@ import { AiFillYoutube, AiFillTwitterCircle, AiFillInstagram, AiFillFacebook } f
 import { useDispatch, useSelector } from 'react-redux';
 import { createProfile } from '../../redux/action/Profile.action';
 import Alert from '../Alert/Alert';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import styles from '../CreateProfile/CreateProfile.module.css';
 import { getOwnProfile } from '../../redux/action/Profile.action';
 
@@ -125,8 +125,9 @@ const EditProfile = () => {
                             <input onChange={handleChange} value={facebook} type="text" className="form-control m-2" name="facebook" id="facebook" placeholder="www.facebook.com" />
                         </div>
                     </div>
-                    <button className="btn btn-secondary w-25 offset-md-1 mt-4" type="submit">Update Profile</button>
+                    <button className="btn btn-secondary w-25 mt-4" type="submit">Update Profile</button>
                 </form>
+                <NavLink to="/viewprofile"><buttton className="btn btn-primary w-25 mt-4">Go Back</buttton></NavLink>
             </div>
         </div>
     );

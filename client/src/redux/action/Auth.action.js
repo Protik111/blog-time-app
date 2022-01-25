@@ -42,6 +42,8 @@ export const registerUser = ({ name, email, password }) => async dispatch => {
 
         dispatch(loadUser());
 
+        dispatch(setAlert('Account Has Been Created.', 'Pcreated'))
+
     } catch (error) {
         const errors = error.response.data.errors;
         // console.log(errors, 'errors');

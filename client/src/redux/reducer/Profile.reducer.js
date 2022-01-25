@@ -24,7 +24,7 @@ const profileReducer = (state = initialState, { type, payload }) => {
                 error: payload,
                 loading: false
             };
-        case 'CLEAR_PROFILE': 
+        case 'CLEAR_PROFILE':
         return {
             ...state,
             profile: null,
