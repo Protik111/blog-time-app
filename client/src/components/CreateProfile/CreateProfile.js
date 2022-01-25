@@ -57,85 +57,23 @@ const CreateProfile = () => {
             <div className={`${styles.create_profile_container} offset-sm-2 offset-md-1 offset-lg-2`}>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group w-75 m-2 p-1">
-                        <input type="text" className="form-control" id="bio" placeholder="biography" name="bio" onChange={handleChange} value={bio} />
+                        <input type="text" className="form-control" id="bio" placeholder="Biography" name="bio" onChange={handleChange} value={bio} />
                         <label for="bio">Type about yourself. <span style={{ color: 'red' }}>(required)</span></label>
                     </div>
                     <div className="form-group w-75 m-2 p-1">
-                        <input onChange={handleChange} value={company} type="text" className="form-control" id="company" placeholder="company or workplace" name="company" />
+                        <input onChange={handleChange} value={company} type="text" className="form-control" id="company" placeholder="Company/Workplace" name="company" />
                         <label for="company">Could be your own company or where you work.</label>
                     </div>
                     <div className="form-group w-75 m-2 p-1">
-                        <input onChange={handleChange} value={website} type="text" className="form-control" name="website" id="website" placeholder="https://www.blogs.com" />
+                        <input onChange={handleChange} value={website} type="text" className="form-control" name="website" id="website" placeholder="Website Url" />
                         <label for="website">Enter your website address.</label>
                     </div>
                     <div className="form-group w-75 m-2 p-1">
-                        <input onChange={handleChange} value={location} type="text" className="form-control" name="location" id="location" placeholder="Dhaka, Bangladesh" />
+                        <input onChange={handleChange} value={location} type="text" className="form-control" name="location" id="location" placeholder="Location" />
                         <label for="location">City and country. <span style={{ color: 'red' }}>(eg. Dhaka, Bangladesh)</span></label>
                     </div>
 
-                    {/* Experience Section */}
-                    {/* <div className="mt-4">
-                        <h5>Add Experiences</h5>
-                    </div>
-
-                    <div className="form-group w-50 m-2 p-1">
-                        <input onChange={handleChange} value={title} type="text" className="form-control" name="title" id="title" placeholder="Software Developer" />
-                        <label for="title">Designation where you worked for. <span style={{ color: 'red' }}>(required)</span></label>
-                    </div>
-                    <div className="form-group w-50 m-2 p-1">
-                        <input onChange={handleChange} value={companyC} type="text" className="form-control" name="companyC" id="companyC" placeholder="Tech Insights Ltd" />
-                        <label for="companyC">Company name where your worked for. <span style={{ color: 'red' }}>(required)</span></label>
-                    </div>
-
-                    <div className="form-group w-50 m-2 p-1">
-                        <input onChange={handleChange} value={locationC} type="text" className="form-control" name="locationC" id="locationC" placeholder="169/2/A Niketon, Dhaka, Bangladesh" />
-                        <label for="locationC">Location of your company. </label>
-                    </div>
-
-                    <div className="form-group w-50 m-2 p-1">
-                        <h6>From Date <span style={{ color: 'red' }}>(required)</span></h6>
-                        <input onChange={handleChange} value={from} className="w-50" type="date" name="from" />
-                    </div>
-                    <div className="form-group w-50 m-2 p-1">
-                        <input
-                            type="checkbox"
-                            name="current"
-                            checked={current}
-                            value={current}
-
-                        />{' '}
-                        Current Job
-                    </div>
-                    <div className="form-group  w-50 m-2 p-1">
-                        <h6>To Date</h6>
-                        <input
-                            onChange={handleChange}
-                            value={to}
-                            type="date"
-                            name="to"
-                            className="w-50"
-                            value={to}
-                            disabled={current}
-                        />
-                    </div>
-
-                    <div className="form-group w-50 m-2 p-1">
-                        <textarea
-                            onChange={handleChange}
-                            value={description}
-                            className="w-100"
-                            name="description"
-                            cols="30"
-                            id="desciption"
-                            rows="5"
-                            placeholder="Job Description"
-                            value={description}
-                        />
-                        <label for="desciption">Descibe what you did in your workplace.</label>
-                    </div> */}
-
                     {/* collapse */}
-
 
                     <p>
                         <a className="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">

@@ -3,11 +3,11 @@
     border-radius: 5px;
     position: absolute;
     left: 50%;
-    top: 80%;
+    top: 75%;
     transform: translate(-50%, -50%);
     width: 80%;
     box-shadow: 1px 1px 7px rgb(245, 241, 241);
-    height: 120vh;
+    min-height: 100%;
 }
 .user_name{
     font-weight: bolder;

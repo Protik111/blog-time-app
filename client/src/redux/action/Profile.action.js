@@ -65,3 +65,35 @@ export const createProfile = (formData, navigate, update = false) => async dispa
         });
     }
 }
+
+export const addExperience = (formData, navigate) => async dispatch => {
+    try {
+        const headersConfig = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const body = JSON.stringify(formData);
+        const response = await axios.put('/api/user/experience', body, headersConfig);
+
+        dispatch({
+            type: ActionTypes.ADD_EXPERIENCE,
+            payload: response
+        });
+
+        dispatch(setAlert('Experience Added', 'Pcreated'));
+
+        navigate('/dashboard');
+
+    } catch (error) {
+        const errors = error.response.data.errors;
+        if (errors) {
+            errors.map(error => dispatch(setAlert(error.msg, 'notcreated')))
+        }
+        
+        dispatch({
+            type: ActionTypes.PROFILE_ERROR,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
+}

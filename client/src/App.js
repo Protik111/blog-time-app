@@ -13,6 +13,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import CreateProfile from './components/CreateProfile/CreateProfile';
 import ViewProfile from './components/ViewProfile/ViewProfile';
 import EditProfile from './components/EditProfile/EditProfile';
+import AddExperience from './components/AddExperience/AddExperience';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -34,6 +35,7 @@ function App() {
           <Route path="/createprofile" element={<PrivateRoute><CreateProfile /></PrivateRoute>}></Route>
           <Route path="/viewprofile" element={<PrivateRoute><ViewProfile /></PrivateRoute>}></Route>
           <Route path="/editprofile" element={<PrivateRoute><EditProfile /></PrivateRoute>}></Route>
+          <Route path="/addexperience" element={<PrivateRoute><AddExperience /></PrivateRoute>}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>

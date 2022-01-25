@@ -6,6 +6,7 @@ import blankProfile from '../../images/slides/blank.png';
 import { AiFillYoutube, AiFillTwitterCircle, AiFillInstagram, AiFillFacebook } from 'react-icons/ai';
 import { NavLink } from 'react-router-dom';
 import Alert from '../Alert/Alert';
+import ViewExperience from '../ViewExperience/ViewExperience';
 
 
 const ViewProfile = () => {
@@ -62,27 +63,17 @@ const ViewProfile = () => {
                 </div>)}
                 <hr />
                 <div className="d-flex mb-3">
-                    <h4 className="offset-1 offset-md-3 mt-2">Experiences :</h4>
-                    {profile.experience.length < 1 && <button className="btn btn-secondary offset-md-3">Add Experience</button>}
-                    {profile.experience.length > 0 && <button className="btn btn-secondary offset-md-3">Edit Experience</button>}
+                    <h2 className="offset-1 offset-md-2 mt-2">Experiences</h2>
+                    <NavLink to="/addexperience" className="offset-md-3 w-100">
+                        <button className="btn btn-secondary offset-md-3">Add Experience</button>
+                    </NavLink>
+                    {/* <NavLink to="/addexperience" className="w-100">
+                        {profile.experience.length > 0 && <button className="btn btn-secondary offset-md-3">Edit Experience</button>}
+                    </NavLink> */}
                 </div>
 
                 {profile.experience.length > 0 ? (
-                    <div>
-                        <div className="d-flex justify-content-center">
-                            <h5 className={styles.viewTitle}> 💼 Title : {profile.experience[0].title ? profile.experience[0].title : 'Not Added 🚫'}</h5>
-                        </div>
-                        <div className="d-flex justify-content-center">
-                            <h5 className={styles.viewTitle}> 🏫 Company : {profile.experience[0].company ? profile.experience[0].company : 'Not Added 🚫'}</h5>
-                        </div>
-
-                        <div className="d-flex justify-content-center">
-                            <h5 className={styles.viewTitle}> 📅 From : {profile.experience[0].from ? profile.experience[0].from : 'Not Added 🚫'}</h5>
-                        </div>
-                        <div className="d-flex justify-content-center">
-                            <h5 className={styles.viewTitle}> 📅 To : {profile.experience[0].to ? profile.experience[0].to : 'Not Added 🚫'}</h5>
-                        </div>
-                    </div>
+                    <ViewExperience></ViewExperience>
                 ) : (<div className="d-flex justify-content-center">
                     <h5 className={styles.viewTitle}>No Experience Added</h5>
                 </div>)}
