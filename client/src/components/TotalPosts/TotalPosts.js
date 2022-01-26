@@ -11,7 +11,7 @@ const TotalPosts = () => {
             </div>
             <div className="text-center">
                 <p>This is where you can create your posts, but you haven't written anything yet.</p>
-                <NavLink to="/createpost"><button className="p-3 btn btn-secondary"> ✍️ Write Your Blog Now</button></NavLink>
+                <NavLink to="/createpost"><button className="p-2 btn btn-secondary mb-3"> ✍️ Write Your Blog Now</button></NavLink>
             </div>
         </div>
     );

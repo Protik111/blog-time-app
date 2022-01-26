@@ -13,7 +13,7 @@ const ViewPost = () => {
                 post.map(post => <ViewPostStyle post={post} key={post._id}></ViewPostStyle>)
             }
             <div className="text-center mb-3 pb-3">
-                <NavLink to="/createpost"><button className="p-3 btn btn-secondary"> ✍️ Write More Blog</button></NavLink>
+                <NavLink to="/createpost"><button className="p-2 btn btn-secondary"> ✍️ Write More Blog</button></NavLink>
             </div>
         </div>
     );

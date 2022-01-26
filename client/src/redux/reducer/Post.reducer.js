@@ -17,6 +17,7 @@ const postReducer = (state = initialState, { type, payload }) => {
                 loading: false
             }
         case ActionTypes.POST_FAIL:
+        case ActionTypes.DELETE_FAIL:
             return {
                 ...state,
                 loading: false,

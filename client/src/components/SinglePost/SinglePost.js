@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../Home/Navbar/Navbar';
 import styles from '../TotalPosts/TotalPosts.module.css';
 import postImage from '../../images/emptyBlog.jpg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box } from "@mui/system";
 import LinearProgress from '@mui/material/LinearProgress';
+import { deletePost } from '../../redux/action/Post.action';
 
 const SinglePost = () => {
     const { id } = useParams();
     console.log('ids', id);
     const [singlePost, setSinglePost] = useState([]);
     const { post } = useSelector(state => state.postReducer);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         setSinglePost(post.filter(post => post._id === id));
@@ -25,7 +28,7 @@ const SinglePost = () => {
         )
     }
 
-    console.log('newPost', singlePost);
+    // console.log('newPost', singlePost);
     return (
         <div>
             <Navbar></Navbar>
@@ -41,13 +44,13 @@ const SinglePost = () => {
                 </div>
                 <div className="d-flex justify-content-between">
                     <div className="text-center mb-3 pb-3 mb-4">
-                        <NavLink to="/createpost"><button className="p-3 btn btn-secondary mt-4"> ✍️ Edit Your Post</button></NavLink>
+                        <NavLink to="/editpost"><button className="p-2 btn btn-secondary mt-4"> ✍️ Edit Your Post</button></NavLink>
                     </div>
                     <div className="text-center mb-3 pb-3 mb-4">
-                        <NavLink to="/dashboard"><button className=" p-3 btn btn-secondary mt-4"> 🏠 Go To Dashboard</button></NavLink>
+                        <NavLink to="/dashboard"><button className=" p-2 btn btn-secondary mt-4"> 🏠 Go To Dashboard</button></NavLink>
                     </div>
                     <div className="text-center mb-3 pb-3 mb-4">
-                        <NavLink to="/createpost"><button className="p-3 btn btn-secondary mt-4"> ❌ Delete Your Post</button></NavLink>
+                        <button className="p-2 btn btn-secondary mt-4" onClick={() => dispatch(deletePost(id, navigate))}> ❌ Delete Your Post</button>
                     </div>
                 </div>
             </div>

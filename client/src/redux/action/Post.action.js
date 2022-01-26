@@ -50,3 +50,22 @@ export const getAllPosts = () => async dispatch => {
         })
     }
 }
+
+export const deletePost = (id, navigate) => async dispatch => {
+    try {
+        const response = await axios.delete(`/api/user/deletepost/${id}`);
+        
+        dispatch({
+            type: ActionTypes.DELETE_POST,
+            payload: response.data
+        });
+
+        dispatch(setAlert('Post Deleted Successfully', 'Pcreated'));
+        navigate('/dashboard');
+    } catch (error) {
+        dispatch({
+            type: ActionTypes.DELETE_FAIL,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
+}
