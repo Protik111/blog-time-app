@@ -6,14 +6,14 @@ import ViewPostStyle from '../ViewPostStyle/ViewPostStyle';
 
 const ViewPost = () => {
     const { post } = useSelector(state => state.postReducer);
-    console.log(post);
+    // console.log(post);
     return (
         <div className={`${styles.totalPosts_container} container mt-2 mb-3`}>
             {
                 post.map(post => <ViewPostStyle post={post} key={post._id}></ViewPostStyle>)
             }
             <div className="text-center mb-3 pb-3">
-                <NavLink to="/createpost"><button className="btn btn-secondary"> ✍️ Write More Blog</button></NavLink>
+                <NavLink to="/createpost"><button className="p-3 btn btn-secondary"> ✍️ Write More Blog</button></NavLink>
             </div>
         </div>
     );

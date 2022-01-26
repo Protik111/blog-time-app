@@ -3,7 +3,7 @@
 }
 .post_image img{
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     transition: transform .3s ease-in-out;
 }
 

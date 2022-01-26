@@ -16,6 +16,7 @@ import EditProfile from './components/EditProfile/EditProfile';
 import AddExperience from './components/AddExperience/AddExperience';
 import CreatePost from './components/CreatePost/CreatePost';
 import { getAllPosts } from './redux/action/Post.action';
+import SinglePost from './components/SinglePost/SinglePost';
 
 function App() {
   if(localStorage.token){
@@ -43,6 +44,7 @@ function App() {
           <Route path="/editprofile" element={<PrivateRoute><EditProfile /></PrivateRoute>}></Route>
           <Route path="/addexperience" element={<PrivateRoute><AddExperience /></PrivateRoute>}></Route>
           <Route path="/createpost" element={<PrivateRoute><CreatePost /></PrivateRoute>}></Route>
+          <Route path="/singlepost/:id" element={<PrivateRoute><SinglePost /></PrivateRoute>}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>
