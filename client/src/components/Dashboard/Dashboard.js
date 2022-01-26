@@ -9,16 +9,24 @@ import PostCount from '../PostCount/PostCount';
 import TotalPosts from '../TotalPosts/TotalPosts';
 import { NavLink } from 'react-router-dom';
 import Alert from '../Alert/Alert';
+import ViewPost from '../ViewPost/ViewPost';
+import { getAllPosts } from '../../redux/action/Post.action';
 
 const Dashboard = () => {
-    useEffect(() => {
-        dispatch(getOwnProfile());
-    }, [])
-
     const { profile, loading } = useSelector(state => state.profileReducer);
     const { user } = useSelector(state => state.authReducer);
+    const { post } = useSelector(state => state.postReducer);
     const dispatch = useDispatch();
-    // console.log('profile', profile);
+
+    useEffect(() => {
+        dispatch(getOwnProfile());
+    }, [post]);
+
+    useEffect(() => {
+        dispatch(getAllPosts());
+    }, [])
+
+    // console.log('post', post);
 
     return (
         <div className="container-fluid p-0 mb-5">
@@ -55,7 +63,11 @@ const Dashboard = () => {
             <div className="offset-lg-1 offset-md-1 offset-sm-1 mt-5">
                 <h3>Your Blogs</h3>
             </div>
-            <TotalPosts></TotalPosts>
+            {
+                post.length > 0 ? (<ViewPost></ViewPost>): (<TotalPosts></TotalPosts>)
+            }
+            {/* <TotalPosts></TotalPosts> */}
+            
         </div>
     );
 };

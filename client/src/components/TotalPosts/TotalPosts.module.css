@@ -1,6 +1,6 @@
 .totalPosts_container{
     box-shadow: 1px 1px 15px gray;
-    height: 80vh;
+    min-height: 100%;
     background-color: #fffefe;
     border-radius: 5px;
     width: 90%;

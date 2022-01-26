@@ -14,6 +14,8 @@ import CreateProfile from './components/CreateProfile/CreateProfile';
 import ViewProfile from './components/ViewProfile/ViewProfile';
 import EditProfile from './components/EditProfile/EditProfile';
 import AddExperience from './components/AddExperience/AddExperience';
+import CreatePost from './components/CreatePost/CreatePost';
+import { getAllPosts } from './redux/action/Post.action';
 
 function App() {
   if(localStorage.token){
@@ -23,6 +25,10 @@ function App() {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
+
+  useEffect(() => {
+      store.dispatch(getAllPosts());
+  }, [])
 
   return (
     <Provider store={store}>
@@ -36,6 +42,7 @@ function App() {
           <Route path="/viewprofile" element={<PrivateRoute><ViewProfile /></PrivateRoute>}></Route>
           <Route path="/editprofile" element={<PrivateRoute><EditProfile /></PrivateRoute>}></Route>
           <Route path="/addexperience" element={<PrivateRoute><AddExperience /></PrivateRoute>}></Route>
+          <Route path="/createpost" element={<PrivateRoute><CreatePost /></PrivateRoute>}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>
