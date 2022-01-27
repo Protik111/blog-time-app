@@ -19,6 +19,11 @@ router.post('/createpost', [auth, [
         return res.status(400).json({ errors: errors.array() })
     };
 
+    // let title = await Post.findOne({ title });
+    //         if (title) {
+    //             res.status(400).json({ errors: [{ msg: 'Title Already Exists' }] })
+    //         }
+
     try {
         const postData = new Post({
             user: req.user.id,
@@ -44,17 +49,25 @@ router.post('/createpost', [auth, [
 //@route PUT /updatepost
 //@desc update a post
 //@access private
-router.put('/updatepost/:post_id', auth, async (req, res) => {
+router.put('/updatepost/:post_id', [auth, [
+    body('title', 'Title is Required and should be Unique').notEmpty(),
+    body('description', 'Description is Required').notEmpty(),
+]], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    };
+    
     const postId = req.params.post_id;
     try {
         const user = await Profile.findOne({ user: req.user.id });
-        if(!user){
+        if (!user) {
             return res.status(400).json({ msg: 'Invalid User' })
         }
-        
+
         const post = await Post.findById(postId);
-        if(!post){
-            return res.status(400).json({msg: 'Post Not Found'})
+        if (!post) {
+            return res.status(400).json({ msg: 'Post Not Found' })
         }
         const updatedPost = await Post.findByIdAndUpdate(postId, { $set: req.body }, { new: true });
         res.send(updatedPost)
@@ -75,15 +88,15 @@ router.delete('/deletepost/:post_id', auth, async (req, res) => {
     const postId = req.params.post_id;
     try {
         const user = await Profile.findOne({ user: req.user.id });
-        if(!user){
+        if (!user) {
             return res.status(400).json({ msg: 'Invalid User' })
         }
 
         const post = await Post.findByIdAndDelete(postId);
-        if(!post){
-            return res.status(400).json({msg: 'Post not Found'});
+        if (!post) {
+            return res.status(400).json({ msg: 'Post not Found' });
         }
-        res.status(200).json({msg: 'Post Deleted Successfully'});
+        res.status(200).json({ msg: 'Post Deleted Successfully' });
 
     } catch (error) {
         console.log(error.message);
@@ -104,7 +117,7 @@ router.get('/showallpost', auth, async (req, res) => {
         //     return res.status(400).json({ msg: 'Invalid User' })
         // }
 
-        const allPosts = await Post.find({user: req.user.id});
+        const allPosts = await Post.find({ user: req.user.id });
         res.send(allPosts)
     } catch (error) {
         console.log(error.message);

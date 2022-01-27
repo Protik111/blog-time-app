@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Alert from '../Alert/Alert';
 import Navbar from '../Home/Navbar/Navbar';
-import styles from './CreatePost.module.css';
-import { createPost } from '../../redux/action/Post.action';
-import { NavLink, useNavigate } from 'react-router-dom';
+import styles from './EditPost.module.css';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { updatePost } from '../../redux/action/Post.action';
 
-const CreatePost = () => {
+const EditPost = () => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -16,6 +16,8 @@ const CreatePost = () => {
     });
     const [uploading, setUploading] = useState(false);
     const [file, setFile] = useState(null);
+    const { id } = useParams();
+    // console.log('id', id);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -49,32 +51,9 @@ const CreatePost = () => {
         }
     };
 
-    // const formData = new FormData()
-    // formData.append('image', file)
-    // setUploading(true)
-
-    // try {
-    //   const config = {
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data',
-    //     },
-    //   }
-
-    //   const { data } = await axios.post('/api/upload', formData, config)
-
-    //   setFormData({...formData, photo: data})
-    //   setUploading(false)
-    // } catch (error) {
-    //   console.error(error)
-    //   setUploading(false);
-    // }
-    //   }
-
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(createPost(formData, navigate));
+        dispatch(updatePost(formData, id, navigate));
     }
 
     return (
@@ -84,7 +63,7 @@ const CreatePost = () => {
                 <Alert></Alert>
             </div>
             <div className="offset-sm-2 offset-md-1 offset-lg-2 mt-4">
-                <h3>Let's Create a Post!</h3>
+                <h3>Let's Update The Post!</h3>
 
             </div>
             <div className="offset-sm-2 offset-md-1 offset-lg-2">
@@ -107,7 +86,7 @@ const CreatePost = () => {
                         <textarea className={`${styles.titleInput} form-control`} id="exampleFormControlTextarea1" name="description" value={description} onChange={handleChange} rows="5" placeholder="Write Story Description"></textarea>
                         <label for="exampleFormControlTextarea1">Write About Your Story<span style={{ color: 'red' }}>(required)</span></label>
                     </div>
-                    <button type="submit" className="btn btn-secondary mt-2 w-25">📝 Publish</button>
+                    <button type="submit" className="btn btn-secondary mt-2 w-25">📝 Make Edit</button>
                 </form>
                 <div className="mb-3 pb-3 mb-4">
                     <NavLink to="/dashboard"><button className="w-25 btn btn-secondary mt-4"> 🏠 Go To Dashboard</button></NavLink>
@@ -117,4 +96,4 @@ const CreatePost = () => {
     );
 };
 
-export default CreatePost;
+export default EditPost;

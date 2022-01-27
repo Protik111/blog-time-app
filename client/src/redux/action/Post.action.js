@@ -69,3 +69,35 @@ export const deletePost = (id, navigate) => async dispatch => {
         })
     }
 }
+
+//update a post
+export const updatePost = (formData, id, navigate) => async dispatch => {
+    try {
+        const headersConfig = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        const body = JSON.stringify(formData);
+
+        const response = await axios.put(`/api/user/updatepost/${id}`, body, headersConfig);
+
+        dispatch({
+            type: ActionTypes.UPDATE_POST,
+            payload: response.data
+        });
+        dispatch(setAlert('Post Updated Successfully', 'Pcreated'));
+        navigate('/dashboard')
+
+    } catch (error) {
+        const errors = error.response.data.errors;
+        if (errors) {
+            errors.map(error => dispatch(setAlert(error.msg, 'notcreated')))
+        }
+
+        dispatch({
+            type: ActionTypes.POST_FAIL,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
+}

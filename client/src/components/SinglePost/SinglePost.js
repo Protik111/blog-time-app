@@ -10,7 +10,7 @@ import { deletePost } from '../../redux/action/Post.action';
 
 const SinglePost = () => {
     const { id } = useParams();
-    console.log('ids', id);
+    // console.log('ids', id);
     const [singlePost, setSinglePost] = useState([]);
     const { post } = useSelector(state => state.postReducer);
     const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const SinglePost = () => {
         )
     }
 
-    const PF = "http://localhost:5000/uploads/";
+    const publicFolder = "http://localhost:5000/uploads/";
 
     // console.log('newPost', singlePost);
     return (
@@ -36,7 +36,7 @@ const SinglePost = () => {
             <Navbar></Navbar>
             <div className={`${styles.totalPosts_container} container mt-5 mb-3`}>
                 <div className="mt-4">
-                    <img src={singlePost[0].photo} className={`${styles.blogPhoto} pt-4 img-fluid rounded mx-auto d-block`} alt="" />
+                    <img src={publicFolder + singlePost[0].photo} className={`${styles.blogPhoto} pt-4 img-fluid rounded mx-auto d-block`} alt="Not Found" />
                 </div>
                 <div className="d-flex justify-content-center mt-4">
                     <h1>{singlePost[0].title}</h1>
@@ -46,7 +46,7 @@ const SinglePost = () => {
                 </div>
                 <div className="d-flex justify-content-between">
                     <div className="text-center mb-3 pb-3 mb-4">
-                        <NavLink to="/editpost"><button className="p-2 btn btn-secondary mt-4"> ✍️ Edit Your Post</button></NavLink>
+                        <NavLink to={`/editpost/${id}`}><button className="p-2 btn btn-secondary mt-4"> ✍️ Edit Your Post</button></NavLink>
                     </div>
                     <div className="text-center mb-3 pb-3 mb-4">
                         <NavLink to="/dashboard"><button className=" p-2 btn btn-secondary mt-4"> 🏠 Go To Dashboard</button></NavLink>

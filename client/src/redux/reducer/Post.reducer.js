@@ -11,6 +11,7 @@ const postReducer = (state = initialState, { type, payload }) => {
     switch(type){
         case ActionTypes.CREATE_POST:
         case ActionTypes.GET_ALL_POSTS:
+        case ActionTypes.UPDATE_POST:
             return {
                 ...state,
                 post: payload,
