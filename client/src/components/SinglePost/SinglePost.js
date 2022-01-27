@@ -28,13 +28,15 @@ const SinglePost = () => {
         )
     }
 
+    const PF = "http://localhost:5000/uploads/";
+
     // console.log('newPost', singlePost);
     return (
         <div>
             <Navbar></Navbar>
             <div className={`${styles.totalPosts_container} container mt-5 mb-3`}>
                 <div className="mt-4">
-                    <img src={postImage} className={`${styles.blogPhoto} pt-4 img-fluid rounded mx-auto d-block`} alt="" />
+                    <img src={singlePost[0].photo} className={`${styles.blogPhoto} pt-4 img-fluid rounded mx-auto d-block`} alt="" />
                 </div>
                 <div className="d-flex justify-content-center mt-4">
                     <h1>{singlePost[0].title}</h1>

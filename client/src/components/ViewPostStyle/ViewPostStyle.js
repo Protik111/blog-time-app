@@ -6,12 +6,13 @@ import { NavLink } from 'react-router-dom';
 
 const ViewPostStyle = (props) => {
     const {title, photo, description, _id} = props.post;
-    // console.log('id', _id);
+    // console.log('id', photo);
+    const PF = "http://localhost:5000/uploads/";
     return (
         <div>
             <div className={`${styles.poststyle_container} p-3 col-12 col-sm-6 col-md-4 m-1 mb-5`}>
                 <div className={`${styles.post_image}`}>
-                    <img src={demoImage} alt="" />
+                    <img src={PF + photo}/>
                 </div>
                 <div className="text-center">
                     <h4 className={styles.news_title}>{title}</h4>

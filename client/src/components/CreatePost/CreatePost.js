@@ -5,6 +5,7 @@ import Navbar from '../Home/Navbar/Navbar';
 import styles from './CreatePost.module.css';
 import { createPost } from '../../redux/action/Post.action';
 import { NavLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const CreatePost = () => {
     const [formData, setFormData] = useState({
@@ -13,6 +14,9 @@ const CreatePost = () => {
         photo: '',
         categories: []
     });
+    const [uploading, setUploading] = useState(false);
+    const [image, setImage] = useState('');
+    const [file, setFile] = useState(null);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -21,6 +25,53 @@ const CreatePost = () => {
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
+
+    const handleFile = async (e) => {
+        const file = e.target.files[0]
+        setFile(file);
+
+        if (file) {
+            const data =new FormData();
+            const filename = Date.now() + file.name;
+            data.append("name", filename);
+            data.append("image", file);
+            formData.photo = filename;
+            try {
+              await axios.post("/api/upload", data);
+            } catch (err) {
+
+            }
+          }
+          try {
+            const res = await axios.post("/api/user/createpost", formData);
+            window.location.replace("/api/user/createpost" + res.data._id);
+          } catch (err) {
+
+          }
+        };
+
+        // const formData = new FormData()
+        // formData.append('image', file)
+        // setUploading(true)
+    
+        // try {
+        //   const config = {
+        //     headers: {
+        //       'Content-Type': 'multipart/form-data',
+        //     },
+        //   }
+    
+        //   const { data } = await axios.post('/api/upload', formData, config)
+    
+        //   setFormData({...formData, photo: data})
+        //   setUploading(false)
+        // } catch (error) {
+        //   console.error(error)
+        //   setUploading(false);
+        // }
+    //   }
+
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,6 +90,17 @@ const CreatePost = () => {
             </div>
             <div className="offset-sm-2 offset-md-1 offset-lg-2">
                 <form onSubmit={handleSubmit}>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" onChange={handleFile}/>
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+
                     <div className="form-group w-75 m-2 p-1">
                         <input type="text" className={`${styles.titleInput} form-control`} id="title" placeholder="Title" name="title" value={title} autoFocus onChange={handleChange} />
                         <label for="bio">Write Title of The Post. <span style={{ color: 'red' }}>(required)</span></label>
