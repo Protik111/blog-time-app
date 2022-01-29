@@ -1,13 +1,18 @@
 import React from 'react';
 import styles from './Poststyle.module.css';
 import { GrFormNextLink } from 'react-icons/gr';
+import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Poststyle = (props) => {
-    const { id, name, fullDescription, category, image } = props.item;
+    const { id, title, description, category, photo } = props.item;
+    // const { posts } = useSelector(state => state.postReducer);
+    // console.log(posts, 'posts');
+    const publicFolder = 'http://localhost:5000/uploads/';
     return (
-        <div className={`${styles.poststyle_container} col-12 col-sm-6 col-md-4 m-1 mb-5`}>
+        <NavLink to="/publicpost" className={`${styles.poststyle_container} col-12 col-sm-6 col-md-4 m-1 mb-5`}>
             <div className={`${styles.post_image}`}>
-                <img src={image} alt="" />
+                <img src={publicFolder + photo} alt="" />
             </div>
             <div className={`${styles.date_duration} mt-3 d-flex justify-content-evenly`}>
                 <p>April 2, 2019</p>
@@ -15,11 +20,11 @@ const Poststyle = (props) => {
                 <p>2 minutes read</p>
             </div>
             <div className="text-center">
-                <h4 className={styles.news_title}>{name}</h4>
-                <p className={`${styles.full_description} mt-3`}>{fullDescription}</p>
+                <h4 className={styles.news_title}>{title}</h4>
+                <p className={`${styles.full_description} mt-3`}>{description}</p>
                 <button type="button" className={styles.more_btn}>Read More<GrFormNextLink/></button>
             </div>
-        </div>
+        </NavLink>
     );
 };
 

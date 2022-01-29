@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Alert from '../Alert/Alert';
 import Navbar from '../Home/Navbar/Navbar';
 import styles from './EditPost.module.css';
@@ -16,12 +16,19 @@ const EditPost = () => {
     });
     const [uploading, setUploading] = useState(false);
     const [file, setFile] = useState(null);
+    const [singlePost, setSinglePost] = useState([]);
     const { id } = useParams();
-    // console.log('id', id);
+    const { post } = useSelector(state => state.postReducer);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { title, description, photo, categories } = formData;
+
+    useEffect(() => {
+        setSinglePost(post.filter(post => post._id === id));
+    }, [id]);
+    // console.log('singlePost', singlePost);
+
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });

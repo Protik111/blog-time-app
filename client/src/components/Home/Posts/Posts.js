@@ -7,6 +7,8 @@ import { AiOutlineTwitter, AiFillGithub, AiOutlineGooglePlus, AiFillInstagram, A
 import styles from './Posts.module.css';
 import Popularpost from '../Popularpost/Popularpost';
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Box } from "@mui/system";
+import LinearProgress from '@mui/material/LinearProgress';
 
 import blogPhoto from '../../../images/slides/blogs_writing.jpg';
 import economyPhoto from '../../../images/slides/economy.jpg';
@@ -22,15 +24,25 @@ import "swiper/css/pagination"
 import SwiperCore, {
     Pagination
 } from 'swiper';
+import { useSelector } from 'react-redux';
 
 // install Swiper modules
 SwiperCore.use([Pagination]);
 
 const Posts = () => {
     const [data, setData] = useState([]);
-    useEffect(() => {
-        setData(datas);
-    }, []);
+    const { posts } = useSelector(state => state.postReducer);
+    // useEffect(() => {
+    //     setData(posts);
+    // }, []);
+
+    if (posts.length <= 0) {
+        return (
+            <Box mt={20} sx={{ width: '100%' }}>
+                <LinearProgress />
+            </Box>
+        )
+    }
 
     const pagination = {
         "clickable": true,
@@ -91,7 +103,7 @@ const Posts = () => {
             <div className={`${styles.post_map_container} container-fluid mt-5`}>
                 <div className="row">
                     {
-                        data.map(item => <Poststyle item={item}></Poststyle>).slice(0, 6)
+                        posts.map(item => <Poststyle item={item}></Poststyle>).slice(0, 6)
                     }
                     <div className={`${styles.popular_post} col-md-3`}>
                         <div className="">
@@ -99,7 +111,7 @@ const Posts = () => {
                             <hr className={styles.heading} />
                         </div>
                         {
-                            data.map(item => <Popularpost item={item}></Popularpost>).slice(0, 4)
+                            posts.map(item => <Popularpost item={item}></Popularpost>).slice(0, 4)
                         }
                     </div>
 

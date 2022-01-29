@@ -1,9 +1,7 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Navbar from '../Home/Navbar/Navbar';
 import { getOwnProfile } from '../../redux/action/Profile.action';
 import { useDispatch, useSelector } from 'react-redux';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import styles from './Dashboard.module.css';
 import PostCount from '../PostCount/PostCount';
 import TotalPosts from '../TotalPosts/TotalPosts';
@@ -11,6 +9,10 @@ import { NavLink } from 'react-router-dom';
 import Alert from '../Alert/Alert';
 import ViewPost from '../ViewPost/ViewPost';
 import { getAllPosts } from '../../redux/action/Post.action';
+import { Box } from "@mui/system";
+import LinearProgress from '@mui/material/LinearProgress';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const Dashboard = () => {
     const { profile, loading } = useSelector(state => state.profileReducer);
@@ -20,13 +22,16 @@ const Dashboard = () => {
 
     useEffect(() => {
         dispatch(getOwnProfile());
-    }, [post]);
-
-    useEffect(() => {
         dispatch(getAllPosts());
-    }, [])
+    }, []);
 
-    // console.log('post', post);
+    if (post === null) {
+        return (
+            <Box mt={20} sx={{ width: '100%' }}>
+                <LinearProgress />
+            </Box>
+        )
+    }
 
     return (
         <div className="container-fluid p-0 mb-5">
@@ -66,6 +71,9 @@ const Dashboard = () => {
             {
                 post.length > 0 ? (<ViewPost></ViewPost>): (<TotalPosts></TotalPosts>)
             }
+            {/* {
+                post !== null ? (<ViewPost></ViewPost>) : (<TotalPosts></TotalPosts>)
+            } */}
             {/* <TotalPosts></TotalPosts> */}
             
         </div>

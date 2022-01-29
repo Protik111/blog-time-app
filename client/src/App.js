@@ -18,19 +18,23 @@ import CreatePost from './components/CreatePost/CreatePost';
 import { getAllPosts } from './redux/action/Post.action';
 import SinglePost from './components/SinglePost/SinglePost';
 import EditPost from './components/EditPost/EditPost';
+import PublicSinglePost from './components/Home/PublicSinglePost/PublicSinglePost';
+import { fetchAllPosts } from './redux/action/Post.action';
 
 function App() {
-  if(localStorage.token){
-    setAuthToken(localStorage.token);
-  }
+  
   
   useEffect(() => {
+    if(localStorage.token){
+      setAuthToken(localStorage.token);
+    }
     store.dispatch(loadUser());
+    store.dispatch(getAllPosts());
+    store.dispatch(fetchAllPosts());
   }, []);
 
-  useEffect(() => {
-      store.dispatch(getAllPosts());
-  }, [])
+  // useEffect(() => {
+  // }, [])
 
   return (
     <Provider store={store}>
@@ -39,6 +43,7 @@ function App() {
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="/publicpost" element={<PublicSinglePost></PublicSinglePost>}></Route>
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}></Route>
           <Route path="/createprofile" element={<PrivateRoute><CreateProfile /></PrivateRoute>}></Route>
           <Route path="/viewprofile" element={<PrivateRoute><ViewProfile /></PrivateRoute>}></Route>
@@ -47,7 +52,6 @@ function App() {
           <Route path="/createpost" element={<PrivateRoute><CreatePost /></PrivateRoute>}></Route>
           <Route path="/singlepost/:id" element={<PrivateRoute><SinglePost /></PrivateRoute>}></Route>
           <Route path="/editpost/:id" element={<PrivateRoute><EditPost /></PrivateRoute>}></Route>
-        
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -47,8 +47,8 @@ const EditProfile = () => {
     //     </div>)
     // }
 
-    console.log(formData, 'from edit profile');
-    console.log('profile', profile);
+    // console.log(formData, 'from edit profile');
+    // console.log('profile', profile);
 
     const {
         bio,

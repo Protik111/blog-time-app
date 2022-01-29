@@ -33,7 +33,7 @@ export const createPost = (formData, navigate) => async dispatch => {
     }
 }
 
-//get all post
+//get all post by user
 export const getAllPosts = () => async dispatch => {
     try {
         const response = await axios.get('/api/user/showallpost');
@@ -42,7 +42,7 @@ export const getAllPosts = () => async dispatch => {
             type: ActionTypes.GET_ALL_POSTS,
             payload: response.data
         });
-        
+
     } catch (error) {
         dispatch({
             type: ActionTypes.POST_FAIL,
@@ -54,7 +54,7 @@ export const getAllPosts = () => async dispatch => {
 export const deletePost = (id, navigate) => async dispatch => {
     try {
         const response = await axios.delete(`/api/user/deletepost/${id}`);
-        
+
         dispatch({
             type: ActionTypes.DELETE_POST,
             payload: response.data
@@ -95,6 +95,23 @@ export const updatePost = (formData, id, navigate) => async dispatch => {
             errors.map(error => dispatch(setAlert(error.msg, 'notcreated')))
         }
 
+        dispatch({
+            type: ActionTypes.POST_FAIL,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
+}
+
+//get all posts
+export const fetchAllPosts = () => async dispatch => {
+    try {
+        const response = await axios.get('/api/user/allposts');
+
+        dispatch({
+            type: ActionTypes.ALL_POSTS,
+            payload: response.data
+        })
+    } catch (error) {
         dispatch({
             type: ActionTypes.POST_FAIL,
             payload: { msg: error.response.statusText, status: error.response.status }

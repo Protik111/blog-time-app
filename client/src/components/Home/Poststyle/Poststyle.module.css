@@ -17,6 +17,7 @@
 }
 .news_title{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #212529;
 }
 .full_description{
     color: gray;

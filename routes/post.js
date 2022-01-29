@@ -124,4 +124,18 @@ router.get('/showallpost', auth, async (req, res) => {
         return res.status(500).json({ msg: 'Server Error' })
     }
 })
+
+//@route GET /allposts
+//@desc showing all posts from post collenction
+//@access public
+router.get('/allposts', async (req, res) => {
+    try {
+        const posts = await Post.find({});
+        res.send(posts);
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).json({ msg: 'Server Error' })
+    }
+})
+
 module.exports = router;
