@@ -43,7 +43,7 @@ function App() {
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
-          <Route path="/publicpost" element={<PublicSinglePost></PublicSinglePost>}></Route>
+          <Route path="/:id" element={<PublicSinglePost></PublicSinglePost>}></Route>
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}></Route>
           <Route path="/createprofile" element={<PrivateRoute><CreateProfile /></PrivateRoute>}></Route>
           <Route path="/viewprofile" element={<PrivateRoute><ViewProfile /></PrivateRoute>}></Route>

@@ -7,7 +7,7 @@ import { FaFacebookF } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <div className={`${styles.footer_cotainer} mt-5 container-fluid`}>
+        <div className={`${styles.footer_cotainer} mt-5 container-fluid`} id="about">
             <div className="d-flex justify-content-center">
                 <div className={`${styles.footer_logo} mt-5 mb-5`}>
                     <img src={logo} alt="" />

@@ -143,6 +143,6 @@ router.get('/allposts', async (req, res) => {
         console.log(error.message);
         return res.status(500).json({ msg: 'Server Error' })
     }
-})
+});
 
 module.exports = router;

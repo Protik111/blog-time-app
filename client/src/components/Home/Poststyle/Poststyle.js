@@ -5,12 +5,12 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Poststyle = (props) => {
-    const { id, title, description, category, photo } = props.item;
+    const { _id, title, description, category, photo } = props.item;
     // const { posts } = useSelector(state => state.postReducer);
     // console.log(posts, 'posts');
     const publicFolder = 'http://localhost:5000/uploads/';
     return (
-        <NavLink to="/publicpost" className={`${styles.poststyle_container} col-12 col-sm-6 col-md-4 m-1 mb-5`}>
+        <NavLink to={`/${_id}`} className={`${styles.poststyle_container} col-12 col-sm-6 col-md-4 m-1 mb-5`} id="blogs">
             <div className={`${styles.post_image}`}>
                 <img src={publicFolder + photo} alt="" />
             </div>

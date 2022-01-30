@@ -64,4 +64,18 @@ router.post('/register',
 
     });
 
+//@route GET /specific user
+//@desc getting a user by a post
+//@access public
+router.get('/postby/:user_id', async (req, res) => {
+    const userId = req.params.user_id;
+    try {
+        const user = await User.find({ _id : userId}).select('-password -email -_id -createdAt -updatedAt');
+        res.send(user);
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).json({ msg: 'Server Error' })
+    }
+});
+
 module.exports = router;

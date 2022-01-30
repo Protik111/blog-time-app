@@ -13,8 +13,6 @@ export const getOwnProfile = () => async dispatch => {
 
 
     } catch (error) {
-
-
         dispatch({
             type: ActionTypes.PROFILE_ERROR,
             payload: { msg: error.response.statusText, status: error.response.status }
