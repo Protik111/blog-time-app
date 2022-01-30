@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import datas from '../../Fakedata/Fakedata.json';
 import Poststyle from '../Poststyle/Poststyle';
 import { FaFacebookF } from 'react-icons/fa';
 import { ImPinterest } from 'react-icons/im';
@@ -9,6 +8,8 @@ import Popularpost from '../Popularpost/Popularpost';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Box } from "@mui/system";
 import LinearProgress from '@mui/material/LinearProgress';
+import { fetchAllPosts } from '../../../redux/action/Post.action';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import blogPhoto from '../../../images/slides/blogs_writing.jpg';
 import economyPhoto from '../../../images/slides/economy.jpg';
@@ -24,7 +25,7 @@ import "swiper/css/pagination"
 import SwiperCore, {
     Pagination
 } from 'swiper';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // install Swiper modules
 SwiperCore.use([Pagination]);
@@ -32,9 +33,12 @@ SwiperCore.use([Pagination]);
 const Posts = () => {
     const [data, setData] = useState([]);
     const { posts } = useSelector(state => state.postReducer);
-    // useEffect(() => {
-    //     setData(posts);
-    // }, []);
+    const dispatch = useDispatch();
+    const { search } = useLocation();
+
+    useEffect(() => {
+        dispatch(fetchAllPosts(search))
+    }, [search]);
 
     if (posts.length <= 0) {
         return (
@@ -61,6 +65,7 @@ const Posts = () => {
                     <div className="col-12 col-md-6 mt-5 pt-5 pb-5 text-center offset-md-1">
                         <h1 className={styles.give_title}>Give A Read On Article</h1>
                         <p>Borem ipsum dolor sit amet, adhuc iriure dissentias est in, est ne diam graece tincidunt. Sit et liber minimuam tsea no doctus fastidii.An molestiae definiebas mel. Quo everti vituperata et, quo cu omnis maiorum aetaea fierentlaboramus eum.Nam at dicant deterruisset.</p>
+                        {search && <h1 className={styles.give_title}>{search.slice(12)}</h1>}
                     </div>
                     <div className="col-12 col-md-3 offset-md-2 mt-5 pt-5">
                         <div className="">
@@ -106,16 +111,49 @@ const Posts = () => {
                         posts.map(item => <Poststyle item={item}></Poststyle>).slice(0, 6)
                     }
                     <div className={`${styles.popular_post} col-md-3`}>
-                        <div className="">
+                        {!search && <div className="">
                             <h3 className={styles.subscribe_title}>Popular Posts</h3>
                             <hr className={styles.heading} />
-                        </div>
+                        </div>}
                         {
-                            posts.map(item => <Popularpost item={item}></Popularpost>).slice(0, 4)
+                            !search && posts.map(item => <Popularpost item={item}></Popularpost>).slice(0, 4)
                         }
+
+                        {/* Categories */}
+
+                        <div className={`${styles.elementor_widgetcontainer} mt-3`}>
+                            <h5>CATEGORIES</h5>
+                            <ul>
+                                <li ClassName="cat-item cat-item-35"><a><NavLink to="/?categories=Nature">Nature</NavLink></a> (12)
+                                </li>
+                                <li ClassName="cat-item cat-item-5"><a><NavLink to="/?categories=Computers">Computers</NavLink></a> (12)
+                                </li>
+                                <li ClassName="cat-item cat-item-40"><a><NavLink to="/?categories=Mathematics">Mathematics</NavLink></a> (12)
+                                </li>
+                                <li ClassName="cat-item cat-item-6"><a><NavLink to="/?categories=Science">Science</NavLink></a> (12)
+                                </li>
+                                <li ClassName="cat-item cat-item-4"><a><NavLink to="/?categories=Sports">Sports</NavLink></a> (12)
+                                </li>
+                                <li ClassName="cat-item cat-item-7"><a><NavLink to="/?categories=Geography">Geography</NavLink></a> (12)
+                                </li>
+                                <li ClassName="cat-item cat-item-39"><a><NavLink to="/?categories=History">History</NavLink></a> (12)
+                                </li>
+                                <li ClassName="cat-item cat-item-9"><a><NavLink to="/?categories=Politics">Politics</NavLink></a> (12)
+                                </li>
+                                <li ClassName="cat-item cat-item-8"><a><NavLink to="/?categories=Programming">Programming</NavLink></a> (12)
+                                </li>
+                                <li ClassName="cat-item cat-item-44"><a><NavLink to="/?categories=Books">Books</NavLink></a> (12)
+                                </li>
+                                <li ClassName="cat-item cat-item-8"><a><NavLink to="/?categories=Film">Film</NavLink></a> (12)
+                                </li>
+                                <li ClassName="cat-item cat-item-44"><a><NavLink to="/?categories=Music">Music</NavLink></a> (12)
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div className={`${styles.newsletter_container}`}>
+
+                    {!search &&  <div className={`${styles.newsletter_container}`}>
                         <div className='mt-5 d-flex justify-content-center'>
                             <p className={styles.newsletter}>Newsletter Subscribe</p>
                         </div>
@@ -128,9 +166,9 @@ const Posts = () => {
                                 <button className="px-5 py-3 px-md-3 py-md-2" type="submit">SUBSCRIBE</button>
                             </div>
                         </form>
-                    </div>
+                    </div>}
 
-                    <div className={`${styles.sponser_container}`}>
+                    {/* <div className={`${styles.sponser_container}`}>
                         <div className="mx-4">
                             <h3 className={styles.subscribe_title}>Featured Article</h3>
                             <hr className={styles.heading} />
@@ -161,7 +199,7 @@ const Posts = () => {
                                 </div>
                             </SwiperSlide>
                         </Swiper>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

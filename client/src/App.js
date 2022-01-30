@@ -30,7 +30,7 @@ function App() {
     }
     store.dispatch(loadUser());
     store.dispatch(getAllPosts());
-    store.dispatch(fetchAllPosts());
+    // store.dispatch(fetchAllPosts());
   }, []);
 
   // useEffect(() => {

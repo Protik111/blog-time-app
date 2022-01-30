@@ -103,9 +103,9 @@ export const updatePost = (formData, id, navigate) => async dispatch => {
 }
 
 //get all posts
-export const fetchAllPosts = () => async dispatch => {
+export const fetchAllPosts = (search) => async dispatch => {
     try {
-        const response = await axios.get('/api/user/allposts');
+        const response = await axios.get('/api/user/allposts'+search);
 
         dispatch({
             type: ActionTypes.ALL_POSTS,

@@ -12,7 +12,7 @@ const CreatePost = () => {
         title: '',
         description: '',
         photo: '',
-        categories: []
+        categories: ''
     });
     const [uploading, setUploading] = useState(false);
     const [file, setFile] = useState(null);
@@ -106,6 +106,24 @@ const CreatePost = () => {
                     <div class="form-group w-75 m-2 p-1">
                         <textarea className={`${styles.titleInput} form-control`} id="exampleFormControlTextarea1" name="description" value={description} onChange={handleChange} rows="5" placeholder="Write Story Description"></textarea>
                         <label for="exampleFormControlTextarea1">Write About Your Story<span style={{ color: 'red' }}>(required)</span></label>
+                    </div>
+                    <div className="mb-2 mt-3">
+                        <label for="categories">Select Category :</label>
+                        <select value={categories} onChange={handleChange} name="categories" className="form-select w-75" aria-label="Default select example">
+                            <option value="any">Any Category</option>
+                            <option value="Nature">Nature</option>
+                            <option value="Computers">Computers</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Science">Science</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Geography">Geography</option>
+                            <option value="History">History</option>
+                            <option value="Politics">Politics</option>
+                            <option value="Programming">Programming</option>
+                            <option value="Books">Books</option>
+                            <option value="Film">Film</option>
+                            <option value="Music">Music</option>
+                        </select>
                     </div>
                     <button type="submit" className="btn btn-secondary mt-2 w-25">📝 Publish</button>
                 </form>

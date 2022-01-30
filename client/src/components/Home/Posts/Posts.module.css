@@ -1,15 +1,28 @@
 .post_map_container{
     position: relative;
+    min-height: 155vh;
 }
 .popular_post{
     position: absolute;
     top: 0;
     right: 3rem;
 }
+.elementor_widgetcontainer ul li{
+    list-style: none;
+    line-height: 2rem;
+}
+.elementor_widgetcontainer ul li a{
+    color: #222222;
+    border-bottom: 1px solid gray;
+}
+.elementor_widgetcontainer ul li a:hover{
+    color: #9c9797;
+    border-bottom: 1px solid rgb(30, 133, 35);
+}
 .newsletter_container{
     position: absolute;
     right: 2.1rem;
-    top: 45%;
+    top: 80%;
     background-color: #222222;
     height: 17%;
     width: 25%;
@@ -32,7 +45,7 @@
 }
 .sponser_container{
     position: relative;
-    top: 150%;
+    top: 190%;
     right: -27px;
     /* top: 70%; */
     width: 30%;

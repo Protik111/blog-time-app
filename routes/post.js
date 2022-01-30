@@ -57,7 +57,7 @@ router.put('/updatepost/:post_id', [auth, [
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() })
     };
-    
+
     const postId = req.params.post_id;
     try {
         const user = await Profile.findOne({ user: req.user.id });
@@ -129,9 +129,16 @@ router.get('/showallpost', auth, async (req, res) => {
 //@desc showing all posts from post collenction
 //@access public
 router.get('/allposts', async (req, res) => {
+    const category = req.query.categories;
     try {
-        const posts = await Post.find({});
-        res.send(posts);
+        if (category) {
+            const posts = await Post.find({ categories: category });
+            res.send(posts);
+        } else {
+            const posts = await Post.find({});
+            res.send(posts);
+        }
+
     } catch (error) {
         console.log(error.message);
         return res.status(500).json({ msg: 'Server Error' })
