@@ -145,4 +145,48 @@ router.get('/allposts', async (req, res) => {
     }
 });
 
+//@route /like/:like
+//@desc posting a love react of a post
+//access private
+router.put('/love/:postId', auth, async (req, res) => {
+    try {
+        const postId = req.params.postId;
+        const post = await Post.findById(postId);
+        if (post.loves.some(love => love.user.toString() === req.user.id)) {
+            return res.status(400).json({ msg: 'Already Loved' })
+        }
+        post.loves.unshift({ user: req.user.id });
+
+        await post.save();
+        return res.json(post.loves);
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({
+            msg: 'Server Error'
+        })
+    }
+});
+
+//@route /unlove/:postId
+//@desc doing unlove react for a post
+//access private
+router.put('/unlove/:postId', auth, async (req, res) => {
+    try {
+        const postId = req.params.postId;
+        const post = await Post.findById(postId);
+        if(!post.loves.some(love => love.user.toString() === req.user.id)){
+            return res.status(400).json({msg: 'Post Has Not Been loved'})
+        }
+        post.loves = post.loves.filter(love => love.user.toString() !== req.user.id);
+        await post.save();
+        return res.json(post.loves);
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({
+            msg: 'Server Error'
+        })
+    }
+})
 module.exports = router;

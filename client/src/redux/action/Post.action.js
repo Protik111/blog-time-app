@@ -118,3 +118,21 @@ export const fetchAllPosts = (search) => async dispatch => {
         })
     }
 }
+
+//love post
+export const postLoveReact = (postId) => async dispatch => {
+    try {
+        console.log('postID', postId);
+        const response = await axios.put(`/api/user/love/${postId}`);
+
+        dispatch({
+            type: ActionTypes.ADD_LOVE,
+            payload: { postId, loves: response.data }
+        })
+    } catch (error) {
+        dispatch({
+            type: ActionTypes.LOVE_ERROR,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
+}

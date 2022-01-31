@@ -27,7 +27,7 @@ const PublicViewProfile = () => {
         )
     }
 
-    console.log('publicProfile', publicProfiles, name);
+    // console.log('publicProfile', publicProfiles, name);
     return (
         <div>
             <Navbar></Navbar>

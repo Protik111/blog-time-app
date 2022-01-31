@@ -5,5 +5,8 @@ export const ActionTypes = {
     'POST_FAIL': 'POST_FAIL',
     'DELETE_POST': 'DELETE_POST',
     'DELETE_FAIL': 'DELETE_FAIL',
-    'UPDATE_POST': 'UPDATE_POST'
+    'UPDATE_POST': 'UPDATE_POST',
+    'ADD_LOVE': 'ADD_LOVE',
+    'REMOVE_LOVE': 'REMOVE_LOVE',
+    'LOVE_ERROR': 'LOVE_ERROR'
 }

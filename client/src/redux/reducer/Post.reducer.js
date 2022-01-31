@@ -4,11 +4,11 @@ const initialState = {
     post: null,
     posts: [],
     loading: true,
-    error: {}
+    error: {},
 };
 
 const postReducer = (state = initialState, { type, payload }) => {
-    switch(type){
+    switch (type) {
         case ActionTypes.CREATE_POST:
         case ActionTypes.GET_ALL_POSTS:
         case ActionTypes.UPDATE_POST:
@@ -30,6 +30,14 @@ const postReducer = (state = initialState, { type, payload }) => {
                 posts: payload,
                 loading: false,
                 error: payload
+            }
+        case ActionTypes.ADD_LOVE:
+            return {
+                ...state,
+                posts: state.posts.map((post) =>
+                    post._id === payload.postId ? { ...post, loves: payload.loves } : post
+                ),
+                loading: false
             }
         default:
             return state;

@@ -8,6 +8,8 @@ import { Box } from "@mui/system";
 import LinearProgress from '@mui/material/LinearProgress';
 import blankPhoto from '../../../images/slides/blank.png';
 import UserInfo from './UserInfo';
+import ReactAndComment from './ReactAndComment';
+import Alert from '../../Alert/Alert';
 
 const PublicSinglePost = () => {
     const [singlePost, setSinglePost] = useState([]);
@@ -17,7 +19,7 @@ const PublicSinglePost = () => {
     useEffect(() => {
         dispatch(fetchAllPosts());
         setSinglePost(posts.filter(post => post._id === id));
-    }, [id]);
+    }, []);
 
     if (singlePost.length <= 0) {
         return (
@@ -27,6 +29,8 @@ const PublicSinglePost = () => {
         )
     }
     const publicFolder = 'http://localhost:5000/uploads/';
+
+    // console.log('singlePost', singlePost);
     return (
         <div className="container-fluid p-0">
             <Navbar></Navbar>
@@ -45,8 +49,14 @@ const PublicSinglePost = () => {
                         <UserInfo date={singlePost[0].createdAt} user={singlePost[0].user}></UserInfo>
                     </div>
                 </div>
+                <div className="w-25 offset-md-2">
+                    <Alert></Alert>
+                </div>
+                <div className="offset-md-2 mb-3 offset-md-2 d-flex">
+                    <ReactAndComment id={id} length={singlePost[0].loves.length}></ReactAndComment>
+                </div>
                 <div className="offset-md-2 mb-3">
-                    <h1 className={styles.title}>{singlePost[0].title}</h1>                    
+                    <h1 className={styles.title}>{singlePost[0].title}</h1>
                 </div>
                 <div className="offset-md-2 mb-3">
                     <p className={styles.description}>{singlePost[0].description}</p>
