@@ -135,3 +135,20 @@ export const postLoveReact = (postId) => async dispatch => {
         })
     }
 }
+
+//unlove post
+export const undoLoveReact = (postId) => async dispatch => {
+    try {
+        const response = await axios.put(`/api/user/unlove/${postId}`);
+
+        dispatch({
+            type: ActionTypes.REMOVE_LOVE,
+            payload: { postId, loves: response.data }
+        })
+    } catch (error) {
+        dispatch({
+            type: ActionTypes.LOVE_ERROR,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
+}

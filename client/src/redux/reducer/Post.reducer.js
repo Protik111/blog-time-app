@@ -32,6 +32,7 @@ const postReducer = (state = initialState, { type, payload }) => {
                 error: payload
             }
         case ActionTypes.ADD_LOVE:
+        case ActionTypes.REMOVE_LOVE:
             return {
                 ...state,
                 posts: state.posts.map((post) =>

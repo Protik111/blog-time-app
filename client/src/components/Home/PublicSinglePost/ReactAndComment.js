@@ -5,6 +5,7 @@ import { fetchAllPosts } from '../../../redux/action/Post.action';
 import { Box } from "@mui/system";
 import LinearProgress from '@mui/material/LinearProgress';
 import { setAlert } from '../../../redux/action/Alert.action';
+import { undoLoveReact } from '../../../redux/action/Post.action';
 
 const ReactAndComment = ({ id, length }) => {
     const [singlePost, setSinglePost] = useState([]);
@@ -25,9 +26,15 @@ const ReactAndComment = ({ id, length }) => {
             </Box>
         )
     }
-    const love = singlePost[0].loves.map(love => love.user ===  user._id)
+    let love = null;
+    if (user === null) {
+        love = false;
+    }else{
+        love = singlePost[0].loves.map(love => love.user === user._id)
+    }
     // console.log('user from react', user._id, singlePost[0].loves, love);
-    
+    // let love =false;
+
     const handleLove = () => {
         if (isAuthenticated) {
             dispatch(postLoveReact(id))
@@ -35,8 +42,8 @@ const ReactAndComment = ({ id, length }) => {
             dispatch(setAlert('Please Login To React', 'notcreated'))
         }
     }
-    const handleDoubleLove = () => {
-        dispatch(setAlert('Not Allowed To React Multiple Time', 'notcreated'))
+    const handleRemoveLove = () => {
+        dispatch(undoLoveReact(id));
     }
     // console.log('singlePost', singlePost);
     return (
@@ -47,13 +54,13 @@ const ReactAndComment = ({ id, length }) => {
                         <path d="M21.179 12.794l.013.014L12 22l-9.192-9.192.013-.014A6.5 6.5 0 0112 3.64a6.5 6.5 0 019.179 9.154zM4.575 5.383a4.5 4.5 0 000 6.364L12 19.172l7.425-7.425a4.5 4.5 0 10-6.364-6.364L8.818 9.626 7.404 8.21l3.162-3.162a4.5 4.5 0 00-5.99.334l-.001.001z"></path>
                     </svg>
                 </a>) :
-                (<a onClick={handleDoubleLove}>
-                    <span class="crayons-reaction__icon crayons-reaction__icon--active">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" className="crayons-icon" style={{'fill': 'red'}}>
-                            <path d="M2.821 12.794a6.5 6.5 0 017.413-10.24h-.002L5.99 6.798l1.414 1.414 4.242-4.242a6.5 6.5 0 019.193 9.192L12 22l-9.192-9.192.013-.014z"></path>
-                        </svg>
-                    </span>
-                </a>)}
+                    (<a onClick={handleRemoveLove}>
+                        <span class="crayons-reaction__icon crayons-reaction__icon--active">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" className="crayons-icon" style={{ 'fill': 'red' }}>
+                                <path d="M2.821 12.794a6.5 6.5 0 017.413-10.24h-.002L5.99 6.798l1.414 1.414 4.242-4.242a6.5 6.5 0 019.193 9.192L12 22l-9.192-9.192.013-.014z"></path>
+                            </svg>
+                        </span>
+                    </a>)}
                 <p className='ms-1' style={{ 'fontSize': '20px' }}>{singlePost[0].loves.length}</p>
             </div>
             <div>
