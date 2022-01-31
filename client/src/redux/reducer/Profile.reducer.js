@@ -5,7 +5,8 @@ const initialState = {
     profile: null,
     profiles: [],
     loading: true,
-    error: {}
+    error: {},
+    publicProfiles: null
 }
 
 const profileReducer = (state = initialState, { type, payload }) => {
@@ -24,6 +25,19 @@ const profileReducer = (state = initialState, { type, payload }) => {
                 error: payload,
                 loading: false
             };
+        case ActionTypes.PROFILE_PUBLIC:
+            return {
+                ...state,
+                publicProfiles: payload,
+                loading: false
+            }
+        case ActionTypes.PROFILE_PUBLIC_ERROR:
+            return {
+                ...state,
+                publicProfiles: null,
+                laoding: false,
+                error: payload
+            }
         case 'CLEAR_PROFILE':
         return {
             ...state,

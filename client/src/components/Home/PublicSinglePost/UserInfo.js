@@ -4,6 +4,7 @@ import { loadUserOfPost } from '../../../redux/action/User.action';
 import Moment from 'react-moment';
 import { Box } from "@mui/system";
 import LinearProgress from '@mui/material/LinearProgress';
+import { NavLink } from 'react-router-dom';
 
 
 const UserInfo = ({ user, date }) => {
@@ -20,11 +21,9 @@ const UserInfo = ({ user, date }) => {
             </Box>
         )
     }
-
-    // console.log('users', users);
     return (
         <div>
-            <h6>{users[0].name}</h6>
+            <NavLink to={`/${users[0].name}/${user}`}><h6>{users[0].name}</h6></NavLink>
             <p>Posted<Moment format="D MMM YYYY" withTitle>{date}</Moment></p>
         </div>
     );

@@ -140,4 +140,20 @@ export const deleteProfile = () => async dispatch => {
             });
         }
     }
-}
+};
+
+export const publicProfile = (userId) => async dispatch => {
+    try {
+       const response = await axios.get(`/api/user/${userId}`);
+
+       dispatch({
+           type: ActionTypes.PROFILE_PUBLIC,
+           payload: response.data
+       });
+    } catch (error) {
+        dispatch({
+            type: ActionTypes.PROFILE_PUBLIC_ERROR,
+            payload: {msg: error.response.statusText, status: error.response.status}
+        });
+    }
+};

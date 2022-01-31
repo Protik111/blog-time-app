@@ -20,6 +20,7 @@ import SinglePost from './components/SinglePost/SinglePost';
 import EditPost from './components/EditPost/EditPost';
 import PublicSinglePost from './components/Home/PublicSinglePost/PublicSinglePost';
 import { fetchAllPosts } from './redux/action/Post.action';
+import PublicViewProfile from './components/PublicViewProfile/PublicViewProfile';
 
 function App() {
   
@@ -52,6 +53,7 @@ function App() {
           <Route path="/createpost" element={<PrivateRoute><CreatePost /></PrivateRoute>}></Route>
           <Route path="/singlepost/:id" element={<PrivateRoute><SinglePost /></PrivateRoute>}></Route>
           <Route path="/editpost/:id" element={<PrivateRoute><EditPost /></PrivateRoute>}></Route>
+          <Route path="/:name/:userId" element={<PublicViewProfile></PublicViewProfile>}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -176,6 +176,6 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
         console.log(error.message);
         res.status(500).json({msg: 'Server Error'})
     }
-})
+});
 
 module.exports = router;
