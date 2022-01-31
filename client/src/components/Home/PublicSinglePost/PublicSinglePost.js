@@ -13,6 +13,7 @@ import Alert from '../../Alert/Alert';
 
 const PublicSinglePost = () => {
     const [singlePost, setSinglePost] = useState([]);
+    const [commentBox, setCommentBox] = useState(false)
     const { id } = useParams();
     const { posts } = useSelector(state => state.postReducer);
     const dispatch = useDispatch();
@@ -53,14 +54,23 @@ const PublicSinglePost = () => {
                     <Alert></Alert>
                 </div>
                 <div className="offset-md-2 mb-3 offset-md-2 d-flex">
-                    <ReactAndComment id={id} length={singlePost[0].loves.length}></ReactAndComment>
+                    <ReactAndComment id={id} length={singlePost[0].loves.length} commentBox={commentBox} setCommentBox={setCommentBox}></ReactAndComment>
                 </div>
                 <div className="offset-md-2 mb-3">
                     <h1 className={styles.title}>{singlePost[0].title}</h1>
                 </div>
-                <div className="offset-md-2 mb-3">
+                <div className="offset-md-2 mb-1">
                     <p className={styles.description}>{singlePost[0].description}</p>
                 </div>
+                {commentBox && <form action="">
+                    <div className="form-group w-50 p-1 offset-md-2 mb-3">
+                        <textarea className={`${styles.titleInput} form-control`} id="exampleFormControlTextarea1" name="description" rows="5" placeholder="Write Your Comment Here" autoFocus></textarea>
+                        <label for="exampleFormControlTextarea1">Type Your Opinion.<span style={{ color: 'red' }}>(required)</span></label>
+                    </div>
+                    <div className="offset-md-2 pb-4">
+                        <button type="submit" className="btn btn-secondary mt-2 w-25">💬 Comment Now</button>
+                    </div>
+                </form>}
             </div>
         </div>
     );
