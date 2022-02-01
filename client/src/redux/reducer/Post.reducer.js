@@ -40,6 +40,12 @@ const postReducer = (state = initialState, { type, payload }) => {
                 ),
                 loading: false
             }
+        case ActionTypes.POST_COMMENT:
+            return {
+                ...state,
+                post: {...state.post, comments: payload},
+                loading: false
+            }
         default:
             return state;
     }

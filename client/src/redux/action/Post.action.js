@@ -151,4 +151,31 @@ export const undoLoveReact = (postId) => async dispatch => {
             payload: { msg: error.response.statusText, status: error.response.status }
         })
     }
+};
+
+//post a comment 
+export const postComment = (postId, formData) => async dispatch => {
+    try {
+        const headersConfig = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const body = JSON.stringify(formData);
+        const response = await axios.put(`/api/user/comment/${postId}`, body, headersConfig);
+
+        dispatch({
+            type: ActionTypes.POST_COMMENT,
+            payload: response.data
+        });
+
+        dispatch(setAlert('Comment Added', 'Pcreated'))
+
+    } catch (error) {
+        dispatch({
+            type: ActionTypes.COMMENT_ERROR,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
 }
