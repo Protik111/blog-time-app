@@ -22,11 +22,11 @@ const Comment = ({ id }) => {
         )
     }
 
-    console.log('single from comment', singlePost);
+    // console.log('single from comment', singlePost);
 
     return (
         <div >
-            {singlePost[0].comments.map(comment => <CommentStyle comment={comment}></CommentStyle>)}
+            {singlePost[0].comments.map(comment => <CommentStyle id={id} comment={comment}></CommentStyle>)}
         </div>
     );
 };

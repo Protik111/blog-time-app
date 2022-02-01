@@ -179,3 +179,22 @@ export const postComment = (postId, formData) => async dispatch => {
         })
     }
 }
+
+//delete a comment 
+export const deleteComment = (postId, commentId) => async dispatch => {
+    try {
+        const response = await axios.delete(`/api/user/deletecomment/${postId}/${commentId}`);
+
+        dispatch({
+            type: ActionTypes.DELETE_COMMENT,
+            payload: commentId
+        });
+
+        dispatch(setAlert('Comment Removed', 'Pcreated'))
+    } catch (error) {
+        dispatch({
+            type: ActionTypes.COMMENT_ERROR,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
+}

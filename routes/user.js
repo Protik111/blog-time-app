@@ -78,4 +78,26 @@ router.get('/postby/:user_id', async (req, res) => {
     }
 });
 
+
+//@route GET /commentcommentusers/:user_id
+//@desc get comment user by id
+//@access public
+// router.get('/commentusers/:user_id', async (req, res) => {
+//     const userId = req.params.user_id;
+//     try {
+//         const user = await User.findById(userId).select('name');
+//         if (!user) {
+//             return res.status(400).json({ msg: 'Users Not Found' })
+//         }
+//         res.send(user)
+
+//     } catch (error) {
+//         console.log(error.message);
+//         if (error.kind === 'ObjectId') {
+//             return res.status(400).json({ msg: 'Users Not Found' })
+//         }
+//         res.status(500).json({ msg: 'Server Error' })
+//     }
+// })
+
 module.exports = router;

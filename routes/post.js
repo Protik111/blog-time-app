@@ -5,6 +5,7 @@ const Post = require('../models/Post');
 const Profile = require('../models/Profile');
 const { body, validationResult } = require('express-validator');
 const auth = require('../middleware/auth');
+const User = require('../models/User');
 
 
 //@route POST /createpost
@@ -203,6 +204,7 @@ router.put('/comment/:postId', [auth, [
 
     try {
         const postId = req.params.postId;
+        const user = await User.findById(req.user.id).select('-password');
         const post = await Post.findById(postId);
         if (!post) {
             return res.status(400).json({ msg: 'Post Not Found' })
@@ -210,7 +212,9 @@ router.put('/comment/:postId', [auth, [
 
         const newComment = {
             user: req.user.id,
-            text: req.body.text
+            text: req.body.text,
+            name: user.name,
+            avatar: user.avatar
         }
         post.comments.unshift(newComment);
         await post.save();

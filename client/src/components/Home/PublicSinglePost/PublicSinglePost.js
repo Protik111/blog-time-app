@@ -51,7 +51,7 @@ const PublicSinglePost = () => {
         navigate(`/${id}`)
     }
 
-    console.log('formData', formData);
+    // console.log('formData', formData);
 
     // console.log('singlePost', singlePost);
     return (
