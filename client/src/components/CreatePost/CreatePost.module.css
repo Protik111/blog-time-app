@@ -12,7 +12,7 @@
     width: 65vw;
     height: 45vh;
     border-radius: 10px;
-    /* object-fit: cover; */
+    object-fit: cover;
 }
 
 

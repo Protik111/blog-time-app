@@ -4,7 +4,6 @@ import { deleteComment } from '../../../redux/action/Post.action';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlert } from '../../../redux/action/Alert.action';
 import Moment from 'react-moment';
-import blankPhoto from '../../../images/slides/blank.png';
 
 
 const CommentStyle = ({ comment, id }) => {
@@ -17,7 +16,7 @@ const CommentStyle = ({ comment, id }) => {
             dispatch(setAlert('Must Be Login To Delete', 'notCreated'))
         }
     }
-    console.log('commentstyler', user, comment.user);
+    // console.log('commentstyler', user, comment.user);
 
     // let buttonShow = null;
     // if (user === null) {

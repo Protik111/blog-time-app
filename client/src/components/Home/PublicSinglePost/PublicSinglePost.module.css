@@ -9,6 +9,7 @@
     width: 78%;
     height: 52vh;
     border-radius: 7px;
+    object-fit: cover;
 }
 .profileImg{
     width: 40px;

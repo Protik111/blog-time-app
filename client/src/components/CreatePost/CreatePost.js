@@ -110,7 +110,7 @@ const CreatePost = () => {
                     <div className="mb-2 mt-3">
                         <label for="categories">Select Category :</label>
                         <select value={categories} onChange={handleChange} name="categories" className="form-select w-75" aria-label="Default select example">
-                            <option value="any">Any Category</option>
+                            <option value="">Any Category</option>
                             <option value="Nature">Nature</option>
                             <option value="Computers">Computers</option>
                             <option value="Mathematics">Mathematics</option>

@@ -78,10 +78,10 @@ const PublicSinglePost = () => {
                 <div className="offset-md-2 mb-3 offset-md-2 d-flex">
                     <ReactAndComment id={id} length={singlePost[0].loves.length} commentBox={commentBox} setCommentBox={setCommentBox}></ReactAndComment>
                 </div>
-                <div className="offset-md-2 mb-3">
+                <div className="offset-md-2 mb-3 w-75">
                     <h1 className={styles.title}>{singlePost[0].title}</h1>
                 </div>
-                <div className="offset-md-2 mb-1">
+                <div className="offset-md-2 mb-1 w-75">
                     <p className={styles.description}>{singlePost[0].description}</p>
                 </div>
                 {commentBox && <form action="" onSubmit={handleSubmit}>

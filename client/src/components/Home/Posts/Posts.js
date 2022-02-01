@@ -10,6 +10,7 @@ import { Box } from "@mui/system";
 import LinearProgress from '@mui/material/LinearProgress';
 import { fetchAllPosts } from '../../../redux/action/Post.action';
 import { NavLink, useLocation } from 'react-router-dom';
+import Paginations from '../Pagination/Paginations';
 
 import blogPhoto from '../../../images/slides/blogs_writing.jpg';
 import economyPhoto from '../../../images/slides/economy.jpg';
@@ -32,6 +33,8 @@ SwiperCore.use([Pagination]);
 
 const Posts = () => {
     const [data, setData] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postPerPage, setPostPerPage] = useState(6);
     const { posts } = useSelector(state => state.postReducer);
     const dispatch = useDispatch();
     const { search } = useLocation();
@@ -39,6 +42,16 @@ const Posts = () => {
     useEffect(() => {
         dispatch(fetchAllPosts(search))
     }, [search]);
+
+    const lastIndexOfPage = postPerPage * currentPage;
+    const firstIndexOfPage = lastIndexOfPage - postPerPage;
+
+    const slicedPosts = posts.slice(firstIndexOfPage, lastIndexOfPage);
+
+    const handlePaginate = (number) => {
+        setCurrentPage(number);
+    }
+
 
     if (posts.length <= 0) {
         return (
@@ -108,8 +121,11 @@ const Posts = () => {
             <div className={`${styles.post_map_container} container-fluid mt-5`}>
                 <div className="row">
                     {
-                        posts.map(item => <Poststyle item={item}></Poststyle>).slice(0, 6)
+                        slicedPosts.map(item => <Poststyle item={item}></Poststyle>)
                     }
+                    <div className="offset-md-4 offset-5">
+                        <Paginations postPerPage={postPerPage} totalPost={posts.length} handlePaginate={handlePaginate}></Paginations>
+                    </div>
                     <div className={`${styles.popular_post} col-md-3`}>
                         {!search && <div className="">
                             <h3 className={styles.subscribe_title}>Popular Posts</h3>
@@ -124,36 +140,38 @@ const Posts = () => {
                         <div className={`${styles.elementor_widgetcontainer} mt-3`}>
                             <h5>CATEGORIES</h5>
                             <ul>
-                                <li ClassName="cat-item cat-item-35"><a><NavLink to="/?categories=Nature">Nature</NavLink></a> (12)
+                                <li ClassName="cat-item cat-item-35"><a><NavLink to="/">All Posts</NavLink></a>
                                 </li>
-                                <li ClassName="cat-item cat-item-5"><a><NavLink to="/?categories=Computers">Computers</NavLink></a> (12)
+                                <li ClassName="cat-item cat-item-35"><a><NavLink to="/?categories=Nature">Nature</NavLink></a>
                                 </li>
-                                <li ClassName="cat-item cat-item-40"><a><NavLink to="/?categories=Mathematics">Mathematics</NavLink></a> (12)
+                                <li ClassName="cat-item cat-item-5"><a><NavLink to="/?categories=Computers">Computers</NavLink></a>
                                 </li>
-                                <li ClassName="cat-item cat-item-6"><a><NavLink to="/?categories=Science">Science</NavLink></a> (12)
+                                <li ClassName="cat-item cat-item-40"><a><NavLink to="/?categories=Mathematics">Mathematics</NavLink></a>
                                 </li>
-                                <li ClassName="cat-item cat-item-4"><a><NavLink to="/?categories=Sports">Sports</NavLink></a> (12)
+                                <li ClassName="cat-item cat-item-6"><a><NavLink to="/?categories=Science">Science</NavLink></a>
                                 </li>
-                                <li ClassName="cat-item cat-item-7"><a><NavLink to="/?categories=Geography">Geography</NavLink></a> (12)
+                                <li ClassName="cat-item cat-item-4"><a><NavLink to="/?categories=Sports">Sports</NavLink></a>
                                 </li>
-                                <li ClassName="cat-item cat-item-39"><a><NavLink to="/?categories=History">History</NavLink></a> (12)
+                                <li ClassName="cat-item cat-item-7"><a><NavLink to="/?categories=Geography">Geography</NavLink></a>
                                 </li>
-                                <li ClassName="cat-item cat-item-9"><a><NavLink to="/?categories=Politics">Politics</NavLink></a> (12)
+                                <li ClassName="cat-item cat-item-39"><a><NavLink to="/?categories=History">History</NavLink></a>
                                 </li>
-                                <li ClassName="cat-item cat-item-8"><a><NavLink to="/?categories=Programming">Programming</NavLink></a> (12)
+                                <li ClassName="cat-item cat-item-9"><a><NavLink to="/?categories=Politics">Politics</NavLink></a>
                                 </li>
-                                <li ClassName="cat-item cat-item-44"><a><NavLink to="/?categories=Books">Books</NavLink></a> (12)
+                                <li ClassName="cat-item cat-item-8"><a><NavLink to="/?categories=Programming">Programming</NavLink></a>
                                 </li>
-                                <li ClassName="cat-item cat-item-8"><a><NavLink to="/?categories=Film">Film</NavLink></a> (12)
+                                <li ClassName="cat-item cat-item-44"><a><NavLink to="/?categories=Books">Books</NavLink></a>
                                 </li>
-                                <li ClassName="cat-item cat-item-44"><a><NavLink to="/?categories=Music">Music</NavLink></a> (12)
+                                <li ClassName="cat-item cat-item-8"><a><NavLink to="/?categories=Film">Film</NavLink></a>
+                                </li>
+                                <li ClassName="cat-item cat-item-44"><a><NavLink to="/?categories=Music">Music</NavLink></a>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
 
-                    {!search &&  <div className={`${styles.newsletter_container}`}>
+                    {!search && <div className={`${styles.newsletter_container}`}>
                         <div className='mt-5 d-flex justify-content-center'>
                             <p className={styles.newsletter}>Newsletter Subscribe</p>
                         </div>
