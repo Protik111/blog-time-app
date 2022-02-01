@@ -15,15 +15,15 @@
     height: 40px;
     border-radius: 50%;
 }
-.author h6{
+/* .author h6{
     font-size: large;
     font-weight: bolder;
-}
+} */
 .author p{
     font-size: 13px;
     color: gray;
 }
-.title{
+/* .title{
     font-size: 3rem;
     font-weight: bolder;
-}
+} */
