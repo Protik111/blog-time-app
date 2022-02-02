@@ -219,7 +219,9 @@ router.put('/comment/:postId', [auth, [
         post.comments.unshift(newComment);
         await post.save();
 
-        res.json(post.comments);
+        const allPosts = await Post.find({});
+
+        res.json(allPosts);
 
     } catch (error) {
         console.log(error.message);
@@ -253,7 +255,8 @@ router.delete('/deletecomment/:postId/:commentId', auth, async(req, res) => {
 
         post.comments = post.comments.filter(comment => comment.id !== commentId);
         await post.save();
-        res.json(post.comments);
+        const allPosts = await Post.find({});
+        res.json(allPosts);
 
     } catch (error) {
         console.log(error.message);

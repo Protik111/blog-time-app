@@ -4,6 +4,7 @@ import { fetchAllPosts } from '../../../redux/action/Post.action';
 import { Box } from "@mui/system";
 import LinearProgress from '@mui/material/LinearProgress';
 import CommentStyle from './CommentStyle';
+import Alert from '../../Alert/Alert';
 
 const Comment = ({ id }) => {
     const [singlePost, setSinglePost] = useState([]);
@@ -26,6 +27,9 @@ const Comment = ({ id }) => {
 
     return (
         <div >
+            <div className="w-50">
+                <Alert></Alert>
+            </div>
             {singlePost[0].comments.map(comment => <CommentStyle id={id} comment={comment}></CommentStyle>)}
         </div>
     );

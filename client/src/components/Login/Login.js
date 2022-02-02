@@ -33,28 +33,34 @@ const Login = () => {
         const { name, email, password, password2 } = userInfo;
 
         if (newUser && password === password2) {
-            dispatch(registerUser({name, email, password}))
+            dispatch(registerUser({ name, email, password }))
         } else if (newUser && password !== password2) {
             dispatch(setAlert("Password does not match.", "notMatchedP"));
         }
 
-        if(!newUser && email && password){
-            dispatch(loginUser({email, password}));
+        if (!newUser && email && password) {
+            dispatch(loginUser({ email, password }));
         }
 
     }
 
-    if(isAuthenticated){
+    if (isAuthenticated) {
         return (<Navigate to="/dashboard"></Navigate>)
     }
 
     return (
         <>
             <Navbar></Navbar>
+
+
+
             <div className={`${styles.registration_container} container-fluid py-5`}>
 
                 <div className="m-2 d-flex justify-content-center">
                     {newUser ? <h3>Account Sign Up</h3> : <h3>Account Login</h3>}
+                </div>
+                <div className={`${styles.alert_container} mt5 pb-3`}>
+                    <Alert></Alert>
                 </div>
                 <div className={styles.login_container}>
                     <form onSubmit={handleSubmit}>
@@ -88,9 +94,6 @@ const Login = () => {
                         </div>
                     </form>
                 </div>
-            </div>
-            <div className={`${styles.alert_container} mt5 pb-3`}>
-                <Alert></Alert>
             </div>
         </>
     );

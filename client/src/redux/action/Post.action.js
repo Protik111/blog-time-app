@@ -165,6 +165,8 @@ export const postComment = (postId, formData) => async dispatch => {
         const body = JSON.stringify(formData);
         const response = await axios.put(`/api/user/comment/${postId}`, body, headersConfig);
 
+        // console.log('resoponse', response);
+
         dispatch({
             type: ActionTypes.POST_COMMENT,
             payload: response.data
@@ -187,7 +189,7 @@ export const deleteComment = (postId, commentId) => async dispatch => {
 
         dispatch({
             type: ActionTypes.DELETE_COMMENT,
-            payload: commentId
+            payload: response.data
         });
 
         dispatch(setAlert('Comment Removed', 'Pcreated'))

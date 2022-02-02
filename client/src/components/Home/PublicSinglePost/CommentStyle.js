@@ -4,6 +4,7 @@ import { deleteComment } from '../../../redux/action/Post.action';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlert } from '../../../redux/action/Alert.action';
 import Moment from 'react-moment';
+import Alert from '../../Alert/Alert';
 
 
 const CommentStyle = ({ comment, id }) => {

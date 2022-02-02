@@ -45,10 +45,9 @@ const PublicSinglePost = () => {
     }
 
     const handleSubmit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         dispatch(postComment(id, formData))
         setCommentBox(false);
-        navigate(`/${id}`)
     }
 
     // console.log('formData', formData);

@@ -43,13 +43,13 @@ const postReducer = (state = initialState, { type, payload }) => {
         case ActionTypes.POST_COMMENT:
             return {
                 ...state,
-                post: {...state.post, comments: payload},
+                posts: payload,
                 loading: false
             }
         case ActionTypes.DELETE_COMMENT:
             return {
                 ...state,
-                post: state.post.comment.filter(comment => comment._id !== payload),
+                posts: payload,
                 loding: false,
             }
         default:
