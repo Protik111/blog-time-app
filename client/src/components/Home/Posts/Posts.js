@@ -121,7 +121,7 @@ const Posts = () => {
             </div>
             <div className={`${styles.post_map_container} container-fluid mt-5`}>
 
-                <div className={`${styles.form__group} d-flex justify-content-center offset-md-1 offset-1 mb-5`}>
+                <div className={`${styles.form__group} d-flex justify-content-center offset-md-1 offset-3 mb-5`}>
                     <input type="input" className={styles.form__field} name="searches" id='searches' value={searches} onChange={(e) => setSearches(e.target.value)} />
                     <label for="name" className={styles.form__label}>Search The Title</label>
                 </div>
@@ -136,7 +136,7 @@ const Posts = () => {
                             }
                         }).map(item => <Poststyle item={item}></Poststyle>)
                     }
-                    <div className="offset-md-4 offset-5">
+                    <div className="offset-md-4 offset-4">
                         <Paginations postPerPage={postPerPage} totalPost={posts.length} handlePaginate={handlePaginate}></Paginations>
                     </div>
                     <div className={`${styles.popular_post} col-md-3`}>

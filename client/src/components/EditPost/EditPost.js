@@ -93,10 +93,10 @@ const EditPost = () => {
                         <textarea className={`${styles.titleInput} form-control`} id="exampleFormControlTextarea1" name="description" value={description} onChange={handleChange} rows="5" placeholder="Write Story Description"></textarea>
                         <label for="exampleFormControlTextarea1">Write About Your Story<span style={{ color: 'red' }}>(required)</span></label>
                     </div>
-                    <button type="submit" className="btn btn-secondary mt-2 w-25">📝 Make Edit</button>
+                    <button type="submit" className="btn btn-secondary mt-2">📝 Make Edit</button>
                 </form>
-                <div className="mb-3 pb-3 mb-4">
-                    <NavLink to="/dashboard"><button className="w-25 btn btn-secondary mt-4"> 🏠 Go To Dashboard</button></NavLink>
+                <div className="mb-3 pb-3 mb-4 ">
+                    <NavLink to="/dashboard"><button className="btn btn-secondary mt-4"> 🏠 Go To Dashboard</button></NavLink>
                 </div>
             </div>
         </div>

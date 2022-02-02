@@ -45,14 +45,14 @@ const SinglePost = () => {
                     <div className="text-center">
                         <p style={{ fontSize: '15px', color: 'gray' }}>{singlePost[0].description}</p>
                     </div>
-                    <div className="d-flex justify-content-between">
-                        <div className="text-center mb-3 pb-3 mb-4">
+                    <div className={`${styles.button_container} d-flex justify-content-between`}>
+                        <div className="text-center">
                             <NavLink to={`/editpost/${id}`}><button className="p-2 btn btn-secondary mt-4"> ✍️ Edit Your Post</button></NavLink>
                         </div>
-                        <div className="text-center mb-3 pb-3 mb-4">
+                        <div className="text-center">
                             <NavLink to="/dashboard"><button className=" p-2 btn btn-secondary mt-4"> 🏠 Go To Dashboard</button></NavLink>
                         </div>
-                        <div className="text-center mb-3 pb-3 mb-4">
+                        <div className="text-center mb-3">
                             <button className="p-2 btn btn-secondary mt-4" onClick={() => dispatch(deletePost(id, navigate))}> ❌ Delete Your Post</button>
                         </div>
                     </div>

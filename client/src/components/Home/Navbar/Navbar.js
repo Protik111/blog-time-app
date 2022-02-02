@@ -22,7 +22,7 @@ const Navbar = () => {
                 <img src={logo} alt="" />
             </NavLink>
             <div className={styles.navbar_links}>
-                <NavLink to="/"><p className={styles.navbar_links_item}><a href="/#home">Home</a></p></NavLink>
+                <NavLink to="/"><p className={styles.navbar_links_item}><a href="">Home</a></p></NavLink>
                 <p className={styles.navbar_links_item}><a href="/#blogs">Blogs</a></p>
                 {
                     isAuthenticated ?
@@ -58,7 +58,7 @@ const Navbar = () => {
                             isAuthenticated ?
                                 <NavLink to="/login"><p className={styles.navbar_links_item}><a onClick={handleLogout} href="">Logout</a></p></NavLink>
                                 :
-                                <NavLink to="/login"><p className={styles.navbar_links_item}><a>Login</a></p></NavLink>
+                                <NavLink to="/login"><p className={styles.navbar_links_item}><a href="">Login</a></p></NavLink>
                         }
                     </div>)
                 }

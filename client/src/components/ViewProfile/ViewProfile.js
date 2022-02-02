@@ -49,14 +49,14 @@ const ViewProfile = () => {
                         <NavLink to="/editprofile"><button className="btn btn-secondary"> ✏️ Edit Profile</button></NavLink>
                     </div>
                     <div className="d-flex justify-content-center mt-2">
-                        <button onClick={() => dispatch(deleteProfile())} className="btn btn-danger w-25"> 👨‍💼 Delete Account</button>
+                        <button onClick={() => dispatch(deleteProfile())} className="btn btn-danger"> 👨‍💼 Delete Account</button>
                     </div>
                     <NavLink to='/dashboard' className="d-flex justify-content-center mt-2">
-                        <button className="btn btn-primary w-25"> 🏠 Go To Dashboard</button>
+                        <button className="btn btn-primary"> 🏠 Go To Dashboard</button>
                     </NavLink>
                 </div>}
                 {profile.social ? <div>
-                    <div className="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center text-center">
                         {profile.social.facebook ? (<h5 className={styles.viewTitle}> <AiFillFacebook size={30}></AiFillFacebook> Facebook : {profile.social.facebook}</h5>) :
                             (<h5 className={styles.viewTitle}> <AiFillFacebook size={30}></AiFillFacebook> Facebook : Not Added 🚫</h5>)}
                     </div>
@@ -76,16 +76,16 @@ const ViewProfile = () => {
                         <NavLink to="/editprofile"><button className="btn btn-secondary"> ✏️ Edit Profile</button></NavLink>
                     </div>
                     <div className="d-flex justify-content-center mt-2">
-                        <button onClick={() => dispatch(deleteProfile())} className="btn btn-danger w-25"> 👨‍💼 Delete Account</button>
+                        <button onClick={() => dispatch(deleteProfile())} className="btn btn-danger"> 👨‍💼 Delete Account</button>
                     </div>
-                    <NavLink to='/dashboard' className="d-flex justify-content-center mt-2">
-                        <button className="btn btn-primary w-25"> 🏠 Go To Dashboard</button>
-                    </NavLink>
-                </div> : (<div className="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center mt-2">
+                        <NavLink to='/dashboard'><button className="btn btn-primary"> 🏠 Go To Dashboard</button></NavLink>
+                    </div>
+                </div> : (<div className="d-flex justify-content-center mt-2">
                     <NavLink to="/editprofile"><button className="btn btn-secondary mt-2">✏️ Add Social Links Or Edit Profile</button></NavLink>
                 </div>)}
                 <hr />
-                <div className="d-flex mb-3">
+                <div className={`${styles.exp_header} d-flex mb-3`}>
                     <h2 className="offset-1 offset-md-2 mt-2">Experiences</h2>
                     <NavLink to="/addexperience" className="offset-md-3 w-100">
                         <button className="btn btn-secondary offset-md-3 mt-2"> ➕ Add Experience</button>

@@ -8,31 +8,47 @@
 .blogPhoto{
     width: 60%;
     height: 50vh;
+    object-fit: cover;
 }
 
 @media screen and (max-width: 900px){
     .totalPosts_container{
-        height: 63vh;
-        width: 90%;
+        min-height: 100%;
+        width: 100%;
     }
 
     .blogPhoto{
-        width: 80%;
-        height: 40vh;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .button_container{
+        display: flex;
+        flex-direction: column;
     }
 }
 
 
 @media screen and (max-width: 762px){
     .blogPhoto{
-        width: 60%;
-        height: 40vh;
+        width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+    }
+    .button_container{
+        display: flex;
+        flex-direction: column;
     }
 }
 
 @media screen and (max-width: 568px){
     .blogPhoto{
         width: 100%;
-        height: 30vh;
+        min-height: 100%;
+        object-fit: cover;
+    }
+    .button_container{
+        display: flex;
+        flex-direction: column;
     }
 }

@@ -31,7 +31,7 @@ const PublicViewProfile = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className={`${styles.viewProfile_container} mt-4`}>
+            <div className={`${styles.viewProfile_container} mt-4 text-center`}>
                 <div className="d-flex justify-content-center mt-4">
                     <img className={`${styles.blankProfile}`} src={blankProfile} alt="" />
                 </div>
@@ -62,7 +62,7 @@ const PublicViewProfile = () => {
                         {publicProfiles[0].social.instagram && (<h5 className={styles.viewTitle}> <AiFillInstagram size={30}></AiFillInstagram> Instagram : {publicProfiles[0].social.instagram}</h5>)}
                     </div>
                     <NavLink to='/' className="d-flex justify-content-center mt-2">
-                        <button className="btn btn-primary w-25"> 🏠 Go Home</button>
+                        <button className="btn btn-primary"> 🏠 Go Home</button>
                     </NavLink>
                 </div>
                 <hr />

@@ -4,3 +4,22 @@
     top: 20%;
     transition: translate(-50%, -50%);
 } */
+
+@media screen and (max-width: 900px) {
+    .create_profile_container input{
+        width: 100%;
+    }
+    .exp_input{
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 762px) {
+    .create_profile_container input{
+        width: 100% !important;
+    }
+    .exp_input{
+        width: 100%;
+    }
+}

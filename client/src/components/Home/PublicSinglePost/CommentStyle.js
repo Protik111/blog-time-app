@@ -28,7 +28,7 @@ const CommentStyle = ({ comment, id }) => {
 
     return (
         <div className="d-flex">
-            <div className={`${styles.comment_container} p-3 w-75 m-2 d-flex justify-content-between`}>
+            <div className={`${styles.comment_container} w-75 p-3 m-2 d-flex justify-content-between`}>
                 <div className="">
                     <p>{comment.text}</p>
                 </div>

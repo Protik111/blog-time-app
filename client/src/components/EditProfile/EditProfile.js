@@ -107,27 +107,27 @@ const EditProfile = () => {
                         </a>
                     </p>
                     <div className="collapse w-75" id="collapseExample">
-                        <div className="form-group w-50 m-2 p-1 d-flex justify-content-center">
+                        <div className="form-group m-2 p-1 d-flex justify-content-center">
                             <AiFillYoutube size={50}></AiFillYoutube>
                             <input onChange={handleChange} value={youtube} type="text" className="form-control m-2" name="youtube" id="youtube" placeholder="www.youtube.com" />
                         </div>
 
-                        <div className="form-group w-50 m-2 p-1 d-flex justify-content-center">
+                        <div className="form-group m-2 p-1 d-flex justify-content-center">
                             <AiFillTwitterCircle size={50}></AiFillTwitterCircle>
                             <input onChange={handleChange} value={twitter} type="text" className="form-control m-2" name="twitter" id="twitter" placeholder="www.twitter.com" />
                         </div>
-                        <div className="form-group w-50 m-2 p-1 d-flex justify-content-center">
+                        <div className="form-group m-2 p-1 d-flex justify-content-center">
                             <AiFillInstagram size={50}></AiFillInstagram>
                             <input onChange={handleChange} value={instagram} type="text" className="form-control m-2" name="instagram" id="instagram" placeholder="www.instagram.com" />
                         </div>
-                        <div className="form-group w-50 m-2 p-1 d-flex justify-content-center">
+                        <div className="form-group m-2 p-1 d-flex justify-content-center">
                             <AiFillFacebook size={50}></AiFillFacebook>
                             <input onChange={handleChange} value={facebook} type="text" className="form-control m-2" name="facebook" id="facebook" placeholder="www.facebook.com" />
                         </div>
                     </div>
-                    <button className="btn btn-secondary w-25 mt-4" type="submit">Update Profile</button>
+                    <button className="btn btn-secondary mt-4" type="submit">Update Profile</button>
                 </form>
-                <NavLink to="/viewprofile"><buttton className="btn btn-primary w-25 mt-4">Go Back</buttton></NavLink>
+                <NavLink to="/viewprofile"><buttton className="btn btn-primary mt-4">Go Back</buttton></NavLink>
             </div>
         </div>
     );

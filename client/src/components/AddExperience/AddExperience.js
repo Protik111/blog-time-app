@@ -49,14 +49,14 @@ const AddExperience = () => {
                 <h3>Let's Add Experience!</h3>
             </div>
 
-            <div className={`${styles.create_profile_container} offset-sm-2 offset-md-1 offset-lg-2`}>
+            <div className={`${styles.create_profile_container} offset-1 offset-sm-2 offset-md-1 offset-lg-2`}>
                 <form onSubmit={handleSubmit}>
                     {/* Experience Section */}
                     <div className="mt-4">
                         <h5>Add Experiences</h5>
                     </div>
 
-                    <div className="form-group w-50 m-2 p-1">
+                    <div className={`${styles.exp_input} form-group w-50 m-2 p-1`}>
                         <input onChange={handleChange} value={title} type="text" className="form-control" name="title" id="title" placeholder="Designation Title" />
                         <label for="title">Designation where you worked for. <span style={{ color: 'red' }}>(required)</span></label>
                     </div>
@@ -84,7 +84,7 @@ const AddExperience = () => {
                         />{' '}
                         Current Job
                     </div>
-                    <div className="form-group  w-50 m-2 p-1">
+                    <div className="form-group w-50 m-2 p-1">
                         <h6>To Date</h6>
                         <input
                             onChange={handleChange}
@@ -116,7 +116,7 @@ const AddExperience = () => {
                         <Alert></Alert>
                     </div>
 
-                    <button className="btn btn-secondary w-25 mt-4" type="submit">Add Experience</button>
+                    <button className="btn btn-secondary mt-4" type="submit">Add Experience</button>
                     <NavLink to="/viewprofile"><buttton className="btn btn-primary offset-md-1 mt-4">Go Back</buttton></NavLink>
                 </form>
                 <div>

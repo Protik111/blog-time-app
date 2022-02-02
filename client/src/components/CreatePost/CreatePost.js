@@ -125,10 +125,10 @@ const CreatePost = () => {
                             <option value="Music">Music</option>
                         </select>
                     </div>
-                    <button type="submit" className="btn btn-secondary mt-2 w-25">📝 Publish</button>
+                    <button type="submit" className="btn btn-secondary mt-2">📝 Publish</button>
                 </form>
                 <div className="mb-3 pb-3 mb-4">
-                    <NavLink to="/dashboard"><button className="w-25 btn btn-secondary mt-4"> 🏠 Go To Dashboard</button></NavLink>
+                    <NavLink to="/dashboard"><button className="btn btn-secondary mt-4"> 🏠 Go To Dashboard</button></NavLink>
                 </div>
             </div>
         </div>

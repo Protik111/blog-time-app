@@ -64,28 +64,28 @@ const PublicSinglePost = () => {
                 <div className="d-flex justify-content-center">
                     <img className={`${styles.postImg} mt-4`} src={publicFolder + singlePost[0].photo} alt="" />
                 </div>
-                <div className="d-flex mt-4 offset-md-2">
+                <div className="d-flex mt-4 offset-1 offset-md-2">
                     <div>
                         <img className={styles.profileImg} src={blankPhoto} alt="" />
                     </div>
-                    <div className={`${styles.author} ms-2 off`}>
+                    <div className={`${styles.author} ms-2`}>
                         <UserInfo date={singlePost[0].createdAt} user={singlePost[0].user}></UserInfo>
                     </div>
                 </div>
-                <div className="w-25 offset-md-2">
+                <div className="w-25 offset-1 offset-md-2">
                     <Alert></Alert>
                 </div>
-                <div className="offset-md-2 mb-3 offset-md-2 d-flex">
+                <div className="offset-1 offset-md-2 mb-3 offset-md-2 d-flex">
                     <ReactAndComment id={id} length={singlePost[0].loves.length} commentBox={commentBox} setCommentBox={setCommentBox}></ReactAndComment>
                 </div>
-                <div className="offset-md-2 mb-3 w-75">
+                <div className="offset-1 offset-md-2 mb-3 w-75">
                     <h1 className={styles.title}>{singlePost[0].title}</h1>
                 </div>
-                <div className="offset-md-2 mb-1 w-75">
+                <div className="offset-1 offset-md-2 mb-1 w-75">
                     <p className={styles.description}>{singlePost[0].description}</p>
                 </div>
                 {commentBox && <form action="" onSubmit={handleSubmit}>
-                    <div className="form-group w-50 p-1 offset-md-2 mb-3">
+                    <div className="form-group w-50 p-1 offset-1 offset-md-2 mb-3">
                         <textarea name="text" value={text} onChange={handleCommentChange} className={`${styles.titleInput} form-control`} id="exampleFormControlTextarea1" rows="5" placeholder="Write Your Comment Here" autoFocus></textarea>
                         <label for="exampleFormControlTextarea1">Type Your Opinion.<span style={{ color: 'red' }}>(required)</span></label>
                     </div>
@@ -93,7 +93,7 @@ const PublicSinglePost = () => {
                         <button type="submit" className="btn btn-secondary mt-2 w-25">💬 Comment Now</button>
                     </div>
                 </form>}
-                <div className="offset-md-2 mb-1">
+                <div className="offset-1 offset-md-2 mb-1">
                     <h4>All Comments 💬 </h4>
                     <hr />
                     {/* {
