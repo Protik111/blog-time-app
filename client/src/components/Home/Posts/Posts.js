@@ -32,7 +32,7 @@ import { useDispatch, useSelector } from 'react-redux';
 SwiperCore.use([Pagination]);
 
 const Posts = () => {
-    const [data, setData] = useState([]);
+    const [searches, setSearches] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(6);
     const { posts } = useSelector(state => state.postReducer);
@@ -43,6 +43,8 @@ const Posts = () => {
         dispatch(fetchAllPosts(search))
     }, [search]);
 
+    console.log('search', searches);
+
     const lastIndexOfPage = postPerPage * currentPage;
     const firstIndexOfPage = lastIndexOfPage - postPerPage;
 
@@ -51,7 +53,6 @@ const Posts = () => {
     const handlePaginate = (number) => {
         setCurrentPage(number);
     }
-
 
     if (posts.length <= 0) {
         return (
@@ -119,9 +120,21 @@ const Posts = () => {
                 </div>
             </div>
             <div className={`${styles.post_map_container} container-fluid mt-5`}>
+
+                <div className={`${styles.form__group} d-flex justify-content-center offset-md-1 offset-1 mb-5`}>
+                    <input type="input" className={styles.form__field} name="searches" id='searches' value={searches} onChange={(e) => setSearches(e.target.value)} />
+                    <label for="name" className={styles.form__label}>Search The Title</label>
+                </div>
+
                 <div className="row">
                     {
-                        slicedPosts.map(item => <Poststyle item={item}></Poststyle>)
+                        slicedPosts.filter(post => {
+                            if (searches === "") {
+                                return post;
+                            } else if (post.title.toLowerCase().includes(searches.toLowerCase())) {
+                                return post;
+                            }
+                        }).map(item => <Poststyle item={item}></Poststyle>)
                     }
                     <div className="offset-md-4 offset-5">
                         <Paginations postPerPage={postPerPage} totalPost={posts.length} handlePaginate={handlePaginate}></Paginations>

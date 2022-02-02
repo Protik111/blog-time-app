@@ -38,21 +38,23 @@ const SinglePost = () => {
                 <div className="mt-4">
                     <img src={publicFolder + singlePost[0].photo} className={`${styles.blogPhoto} pt-4 img-fluid rounded mx-auto d-block`} alt="Not Found" />
                 </div>
-                <div className="d-flex justify-content-center mt-4">
-                    <h1>{singlePost[0].title}</h1>
-                </div>
-                <div className="text-center">
-                    <p style={{ fontSize: '15px', color: 'gray' }}>{singlePost[0].description}</p>
-                </div>
-                <div className="d-flex justify-content-between">
-                    <div className="text-center mb-3 pb-3 mb-4">
-                        <NavLink to={`/editpost/${id}`}><button className="p-2 btn btn-secondary mt-4"> ✍️ Edit Your Post</button></NavLink>
+                <div className="offset-1 offset-md-2 w-75">
+                    <div className="d-flex justify-content-center mt-4">
+                        <h1>{singlePost[0].title}</h1>
                     </div>
-                    <div className="text-center mb-3 pb-3 mb-4">
-                        <NavLink to="/dashboard"><button className=" p-2 btn btn-secondary mt-4"> 🏠 Go To Dashboard</button></NavLink>
+                    <div className="text-center">
+                        <p style={{ fontSize: '15px', color: 'gray' }}>{singlePost[0].description}</p>
                     </div>
-                    <div className="text-center mb-3 pb-3 mb-4">
-                        <button className="p-2 btn btn-secondary mt-4" onClick={() => dispatch(deletePost(id, navigate))}> ❌ Delete Your Post</button>
+                    <div className="d-flex justify-content-between">
+                        <div className="text-center mb-3 pb-3 mb-4">
+                            <NavLink to={`/editpost/${id}`}><button className="p-2 btn btn-secondary mt-4"> ✍️ Edit Your Post</button></NavLink>
+                        </div>
+                        <div className="text-center mb-3 pb-3 mb-4">
+                            <NavLink to="/dashboard"><button className=" p-2 btn btn-secondary mt-4"> 🏠 Go To Dashboard</button></NavLink>
+                        </div>
+                        <div className="text-center mb-3 pb-3 mb-4">
+                            <button className="p-2 btn btn-secondary mt-4" onClick={() => dispatch(deletePost(id, navigate))}> ❌ Delete Your Post</button>
+                        </div>
                     </div>
                 </div>
             </div>
