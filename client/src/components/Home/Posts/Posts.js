@@ -43,7 +43,7 @@ const Posts = () => {
         dispatch(fetchAllPosts(search))
     }, [search]);
 
-    console.log('search', searches);
+    // console.log('search', searches);
 
     const lastIndexOfPage = postPerPage * currentPage;
     const firstIndexOfPage = lastIndexOfPage - postPerPage;
@@ -145,7 +145,7 @@ const Posts = () => {
                             <hr className={styles.heading} />
                         </div>}
                         {
-                            !search && posts.map(item => <Popularpost item={item}></Popularpost>).slice(0, 4)
+                            !search && posts.map(item => <Popularpost item={item}></Popularpost>).slice(8, 12)
                         }
 
                         {/* Categories */}

@@ -32,7 +32,7 @@ const ReactAndComment = ({ id, length, commentBox, setCommentBox }) => {
     }else{
         love = singlePost[0].loves.map(love => love.user === user._id)
     }
-    // console.log('user from react', user._id, singlePost[0].loves, love);
+    console.log('user from react', user._id, singlePost, love);
     // let love =false;
 
     const handleLove = () => {
