@@ -6,7 +6,8 @@
 ## Live Link: (https://shielded-anchorage-62161.herokuapp.com/)
 
 
-<h4>Current Feature Lists🐳:</h4>
+## Current Feature Lists🐳
+
 <ul>
   <li>Showing blogs list with images and title.</li>
   <li>Posts are displayed with pagination.</li>
@@ -28,7 +29,8 @@
   <li>A user can delete his/her profile.</li>
 </ul>
 
-<h4>Technology Used🦄</h4>
+## Technology Used🦄: 
+
 - Html5
 - CSS3
 - Bootstrap4
