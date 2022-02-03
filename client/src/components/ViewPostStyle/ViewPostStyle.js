@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const ViewPostStyle = (props) => {
     const { title, photo, _id } = props.post;
     // console.log('id', photo);
-    const publicFolder = "http://localhost:5000/uploads/";
+    const publicFolder = "https://shielded-anchorage-62161.herokuapp.com/uploads/";
     return (
         <NavLink to={`/singlepost/${_id}`}>
             <div className={`${styles.poststyle_container} col-12 col-md-6 offset-md-3 p-5`}>

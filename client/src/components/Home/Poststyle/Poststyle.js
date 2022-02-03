@@ -6,7 +6,7 @@ import Moment from 'react-moment';
 
 const Poststyle = (props) => {
     const { _id, title, description, categories, photo, createdAt } = props.item;
-    const publicFolder = 'http://localhost:5000/uploads/';
+    const publicFolder = 'https://shielded-anchorage-62161.herokuapp.com/uploads/';
     return (
         <NavLink to={`/${_id}`} className={`${styles.poststyle_container} col-12 col-sm-6 col-md-4 m-1 mb-5`} id="blogs">
             <div className={`${styles.post_image}`}>

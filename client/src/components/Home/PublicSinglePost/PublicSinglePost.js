@@ -35,7 +35,7 @@ const PublicSinglePost = () => {
             </Box>
         )
     }
-    const publicFolder = 'http://localhost:5000/uploads/';
+    const publicFolder = 'https://shielded-anchorage-62161.herokuapp.com/uploads/';
 
     const { text } = formData;
 
