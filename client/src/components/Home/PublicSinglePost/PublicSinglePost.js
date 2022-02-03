@@ -21,7 +21,6 @@ const PublicSinglePost = () => {
     });
 
     const { id } = useParams();
-    const navigate = useNavigate();
     const { posts } = useSelector(state => state.postReducer);
     const dispatch = useDispatch();
     useEffect(() => {
