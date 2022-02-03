@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const TotalPosts = () => {
-    const { profile, loading } = useSelector(state => state.profileReducer);
+    const { profile } = useSelector(state => state.profileReducer);
     return (
         <>
             {profile ? <div className={`${styles.totalPosts_container} container mt-2 mb-3`}>

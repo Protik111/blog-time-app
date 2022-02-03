@@ -14,7 +14,6 @@ const EditPost = () => {
         photo: '',
         categories: []
     });
-    const [uploading, setUploading] = useState(false);
     const [file, setFile] = useState(null);
     const [singlePost, setSinglePost] = useState([]);
     const { id } = useParams();
@@ -22,7 +21,7 @@ const EditPost = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { title, description, photo, categories } = formData;
+    const { title, description } = formData;
 
     useEffect(() => {
         setSinglePost(post.filter(post => post._id === id));
@@ -81,17 +80,17 @@ const EditPost = () => {
 
                     <div class="input-group mb-3">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="inputGroupFile01" onChange={handleFile} />
+                            <input type="file" className="custom-file-input" id="inputGroupFile01" onChange={handleFile} />
                         </div>
                     </div>
 
                     <div className="form-group w-75 m-2 p-1">
                         <input type="text" className={`${styles.titleInput} form-control`} id="title" placeholder="Title" name="title" value={title} onChange={handleChange} />
-                        <label for="bio">Write Title of The Post. <span style={{ color: 'red' }}>(required)</span></label>
+                        <label htmlFor="bio">Write Title of The Post. <span style={{ color: 'red' }}>(required)</span></label>
                     </div>
                     <div class="form-group w-75 m-2 p-1">
                         <textarea className={`${styles.titleInput} form-control`} id="exampleFormControlTextarea1" name="description" value={description} onChange={handleChange} rows="5" placeholder="Write Story Description"></textarea>
-                        <label for="exampleFormControlTextarea1">Write About Your Story<span style={{ color: 'red' }}>(required)</span></label>
+                        <label htmlFor="exampleFormControlTextarea1">Write About Your Story<span style={{ color: 'red' }}>(required)</span></label>
                     </div>
                     <button type="submit" className="btn btn-secondary mt-2">📝 Make Edit</button>
                 </form>

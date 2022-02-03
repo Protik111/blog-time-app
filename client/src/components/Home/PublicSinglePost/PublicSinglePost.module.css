@@ -16,18 +16,10 @@
     height: 40px;
     border-radius: 50%;
 }
-/* .author h6{
-    font-size: large;
-    font-weight: bolder;
-} */
 .author p{
     font-size: 13px;
     color: gray;
 }
-/* .title{
-    font-size: 3rem;
-    font-weight: bolder;
-} */
 
 @media screen and (max-width: 900px){
     .postImg{

@@ -19,7 +19,6 @@ import { getAllPosts } from './redux/action/Post.action';
 import SinglePost from './components/SinglePost/SinglePost';
 import EditPost from './components/EditPost/EditPost';
 import PublicSinglePost from './components/Home/PublicSinglePost/PublicSinglePost';
-import { fetchAllPosts } from './redux/action/Post.action';
 import PublicViewProfile from './components/PublicViewProfile/PublicViewProfile';
 
 function App() {

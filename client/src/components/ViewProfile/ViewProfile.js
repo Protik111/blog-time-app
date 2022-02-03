@@ -11,7 +11,7 @@ import { deleteProfile } from '../../redux/action/Profile.action';
 
 
 const ViewProfile = () => {
-    const { profile, loading } = useSelector(state => state.profileReducer);
+    const { profile } = useSelector(state => state.profileReducer);
     const { user } = useSelector(state => state.authReducer);
     const dispatch = useDispatch();
 

@@ -2,13 +2,10 @@ import React from 'react';
 import styles from './Poststyle.module.css';
 import { GrFormNextLink } from 'react-icons/gr';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import Moment from 'react-moment';
 
 const Poststyle = (props) => {
     const { _id, title, description, categories, photo, createdAt } = props.item;
-    // const { posts } = useSelector(state => state.postReducer);
-    // console.log(posts, 'posts');
     const publicFolder = 'http://localhost:5000/uploads/';
     return (
         <NavLink to={`/${_id}`} className={`${styles.poststyle_container} col-12 col-sm-6 col-md-4 m-1 mb-5`} id="blogs">

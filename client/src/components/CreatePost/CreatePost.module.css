@@ -4,9 +4,7 @@
 }
 .titleInput:focus{
     outline: none;
-    /* border:  1px solid gray; */
     box-shadow: none;
-    /* border-bottom: 1px solid gray; */
 }
 .uploadedImg {
     width: 65vw;

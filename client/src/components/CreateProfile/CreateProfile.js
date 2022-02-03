@@ -58,19 +58,19 @@ const CreateProfile = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="form-group w-75 m-2 p-1">
                         <input type="text" className="form-control" id="bio" placeholder="Biography" name="bio" onChange={handleChange} value={bio} />
-                        <label for="bio">Type about yourself. <span style={{ color: 'red' }}>(required)</span></label>
+                        <label htmlFor="bio">Type about yourself. <span style={{ color: 'red' }}>(required)</span></label>
                     </div>
                     <div className="form-group w-75 m-2 p-1">
                         <input onChange={handleChange} value={company} type="text" className="form-control" id="company" placeholder="Company/Workplace" name="company" />
-                        <label for="company">Could be your own company or where you work.</label>
+                        <label htmlFor="company">Could be your own company or where you work.</label>
                     </div>
                     <div className="form-group w-75 m-2 p-1">
                         <input onChange={handleChange} value={website} type="text" className="form-control" name="website" id="website" placeholder="Website Url" />
-                        <label for="website">Enter your website address.</label>
+                        <label htmlFor="website">Enter your website address.</label>
                     </div>
                     <div className="form-group w-75 m-2 p-1">
                         <input onChange={handleChange} value={location} type="text" className="form-control" name="location" id="location" placeholder="Location" />
-                        <label for="location">City and country. <span style={{ color: 'red' }}>(eg. Dhaka, Bangladesh)</span></label>
+                        <label htmlFor="location">City and country. <span style={{ color: 'red' }}>(eg. Dhaka, Bangladesh)</span></label>
                     </div>
 
                     {/* collapse */}

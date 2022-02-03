@@ -11,7 +11,7 @@ import { getOwnProfile } from '../../redux/action/Profile.action';
 const EditProfile = () => {
     const dispatch = useDispatch();
     const { profile, loading } = useSelector(state => state.profileReducer);
-    const { user } = useSelector(state => state.authReducer);
+    // const { user } = useSelector(state => state.authReducer);
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -40,15 +40,6 @@ const EditProfile = () => {
             facebook: !profile.social ? '' : profile.social.instagram
         })
     }, [loading]);
-
-    // if(loading === true){
-    //     return (<div>
-    //         <h3>Loading...</h3>
-    //     </div>)
-    // }
-
-    // console.log(formData, 'from edit profile');
-    // console.log('profile', profile);
 
     const {
         bio,
@@ -86,19 +77,19 @@ const EditProfile = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="form-group w-75 m-2 p-1">
                         <input type="text" className="form-control" id="bio" placeholder="biography" name="bio" onChange={handleChange} value={bio} />
-                        <label for="bio">Type about yourself. <span style={{ color: 'red' }}>(required)</span></label>
+                        <label htmlFor="bio">Type about yourself. <span style={{ color: 'red' }}>(required)</span></label>
                     </div>
                     <div className="form-group w-75 m-2 p-1">
                         <input onChange={handleChange} value={company} type="text" className="form-control" id="company" placeholder="company or workplace" name="company" />
-                        <label for="company">Could be your own company or where you work.</label>
+                        <label htmlFor="company">Could be your own company or where you work.</label>
                     </div>
                     <div className="form-group w-75 m-2 p-1">
                         <input onChange={handleChange} value={website} type="text" className="form-control" name="website" id="website" placeholder="https://www.blogs.com" />
-                        <label for="website">Enter your website address.</label>
+                        <label htmlFor="website">Enter your website address.</label>
                     </div>
                     <div className="form-group w-75 m-2 p-1">
                         <input onChange={handleChange} value={location} type="text" className="form-control" name="location" id="location" placeholder="Dhaka, Bangladesh" />
-                        <label for="location">City and country. <span style={{ color: 'red' }}>(eg. Dhaka, Bangladesh)</span></label>
+                        <label htmlFor="location">City and country. <span style={{ color: 'red' }}>(eg. Dhaka, Bangladesh)</span></label>
                     </div>
 
                     <p>

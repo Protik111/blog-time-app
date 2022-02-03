@@ -57,9 +57,6 @@ const PublicSinglePost = () => {
         <div className="container-fluid p-0">
             <Navbar></Navbar>
             <div className={`${styles.publicPost_container} container my-5`}>
-                {/* <div>
-                    <h3>{singlePost[0].title}</h3>
-                </div> */}
                 <div className="d-flex justify-content-center">
                     <img className={`${styles.postImg} mt-4`} src={publicFolder + singlePost[0].photo} alt="" />
                 </div>
@@ -86,7 +83,7 @@ const PublicSinglePost = () => {
                 {commentBox && <form action="" onSubmit={handleSubmit}>
                     <div className="form-group w-50 p-1 offset-1 offset-md-2 mb-3">
                         <textarea name="text" value={text} onChange={handleCommentChange} className={`${styles.titleInput} form-control`} id="exampleFormControlTextarea1" rows="5" placeholder="Write Your Comment Here" autoFocus></textarea>
-                        <label for="exampleFormControlTextarea1">Type Your Opinion.<span style={{ color: 'red' }}>(required)</span></label>
+                        <label htmlFor="exampleFormControlTextarea1">Type Your Opinion.<span style={{ color: 'red' }}>(required)</span></label>
                     </div>
                     <div className="offset-md-2 pb-4">
                         <button type="submit" className="btn btn-secondary mt-2 w-25">💬 Comment Now</button>
@@ -95,9 +92,6 @@ const PublicSinglePost = () => {
                 <div className="offset-1 offset-md-2 mb-1">
                     <h4>All Comments 💬 </h4>
                     <hr />
-                    {/* {
-                        singlePost[0].comments.map(comment => <Comment comment={comment.text}></Comment>)
-                    } */}
                     <Comment id={id}></Comment>
                 </div>
             </div>

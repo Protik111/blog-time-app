@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './Comment.module.css';
 import { deleteComment } from '../../../redux/action/Post.action';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlert } from '../../../redux/action/Alert.action';
 import Moment from 'react-moment';
-import Alert from '../../Alert/Alert';
 
 
 const CommentStyle = ({ comment, id }) => {
@@ -17,15 +16,6 @@ const CommentStyle = ({ comment, id }) => {
             dispatch(setAlert('Must Be Login To Delete', 'notCreated'))
         }
     }
-    // console.log('commentstyler', user, comment.user);
-
-    // let buttonShow = null;
-    // if (user === null) {
-    //     buttonShow = false;
-    //     user._id = null;
-    // }else{
-    //     buttonShow = user._id === comment.user
-    // }
 
     return (
         <div className="d-flex">

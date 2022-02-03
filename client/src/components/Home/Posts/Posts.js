@@ -5,23 +5,14 @@ import { ImPinterest } from 'react-icons/im';
 import { AiOutlineTwitter, AiFillGithub, AiOutlineGooglePlus, AiFillInstagram, AiFillLinkedin, AiFillYoutube } from 'react-icons/ai';
 import styles from './Posts.module.css';
 import Popularpost from '../Popularpost/Popularpost';
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Box } from "@mui/system";
 import LinearProgress from '@mui/material/LinearProgress';
 import { fetchAllPosts } from '../../../redux/action/Post.action';
 import { NavLink, useLocation } from 'react-router-dom';
 import Paginations from '../Pagination/Paginations';
-
-import blogPhoto from '../../../images/slides/blogs_writing.jpg';
-import economyPhoto from '../../../images/slides/economy.jpg';
-import healthPhoto from '../../../images/slides/health.jpg';
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination"
-
-
-
 // import Swiper core and required modules
 import SwiperCore, {
     Pagination
@@ -123,7 +114,7 @@ const Posts = () => {
 
                 <div className={`${styles.form__group} d-flex justify-content-center offset-md-1 offset-3 mb-5`}>
                     <input type="input" className={styles.form__field} name="searches" id='searches' value={searches} onChange={(e) => setSearches(e.target.value)} />
-                    <label for="name" className={styles.form__label}>Search The Title</label>
+                    <label htmlFor="name" className={styles.form__label}>Search The Title</label>
                 </div>
 
                 <div className="row">
@@ -134,7 +125,7 @@ const Posts = () => {
                             } else if (post.title.toLowerCase().includes(searches.toLowerCase())) {
                                 return post;
                             }
-                        }).map(item => <Poststyle item={item}></Poststyle>)
+                        }).map(item => <Poststyle key={item._id} item={item}></Poststyle>)
                     }
                     <div className="offset-md-4 offset-4">
                         <Paginations postPerPage={postPerPage} totalPost={posts.length} handlePaginate={handlePaginate}></Paginations>
@@ -145,7 +136,7 @@ const Posts = () => {
                             <hr className={styles.heading} />
                         </div>}
                         {
-                            !search && posts.map(item => <Popularpost item={item}></Popularpost>).slice(8, 12)
+                            !search && posts.map(item => <Popularpost key={item._id} item={item}></Popularpost>).slice(8, 12)
                         }
 
                         {/* Categories */}

@@ -4,7 +4,7 @@ import styles from './Popularpost.module.css';
 import Moment from 'react-moment';
 
 const Popularpost = (props) => {
-    const { _id, title, description, categories, photo, createdAt } = props.item;
+    const { _id, title, categories, photo, createdAt } = props.item;
     const publicFolder = 'http://localhost:5000/uploads/';
     return (
         <NavLink to={`/${_id}`} className={`${styles.single_popular_post} mt-3`}>

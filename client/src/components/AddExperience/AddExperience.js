@@ -10,7 +10,6 @@ import { NavLink } from 'react-router-dom';
 const AddExperience = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const [current, setCurrent] = useState(false);
 
     const [formData, setFormData] = useState({
         title: '',
@@ -31,8 +30,6 @@ const AddExperience = () => {
         description,
         current
     } = formData;
-
-    // console.log('Formdata', formData);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

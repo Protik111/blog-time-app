@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../Home/Navbar/Navbar';
 import styles from '../TotalPosts/TotalPosts.module.css';
-import postImage from '../../images/emptyBlog.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box } from "@mui/system";
 import LinearProgress from '@mui/material/LinearProgress';

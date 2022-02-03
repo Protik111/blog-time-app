@@ -1,11 +1,10 @@
 import React from 'react';
 import styles from '../Home/Poststyle/Poststyle.module.css';
-import demoImage from '../../images/emptyBlog.jpg';
 import { GrFormNextLink } from 'react-icons/gr';
 import { NavLink } from 'react-router-dom';
 
 const ViewPostStyle = (props) => {
-    const { title, photo, description, _id } = props.post;
+    const { title, photo, _id } = props.post;
     // console.log('id', photo);
     const publicFolder = "http://localhost:5000/uploads/";
     return (

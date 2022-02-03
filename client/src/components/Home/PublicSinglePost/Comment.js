@@ -30,7 +30,7 @@ const Comment = ({ id }) => {
             <div className="w-50">
                 <Alert></Alert>
             </div>
-            {singlePost[0].comments.map(comment => <CommentStyle id={id} comment={comment}></CommentStyle>)}
+            {singlePost[0].comments.map(comment => <CommentStyle id={id} key={comment._id} comment={comment}></CommentStyle>)}
         </div>
     );
 };

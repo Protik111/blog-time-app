@@ -1,23 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './ViewExperience.module.css';
 import Moment from 'react-moment';
-import { deleteExperience, getOwnProfile } from '../../redux/action/Profile.action';
+import { deleteExperience } from '../../redux/action/Profile.action';
 import { useNavigate } from 'react-router-dom';
 
 const ViewExperience = () => {
-    const { profile, loading } = useSelector(state => state.profileReducer);
-    const { user } = useSelector(state => state.authReducer);
+    const { profile } = useSelector(state => state.profileReducer);
+    // const { user } = useSelector(state => state.authReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleDelete = (id) => {
         dispatch(deleteExperience(id, navigate));
     }
-    
-    // useEffect(() => {
-    //     dispatch(getOwnProfile());
-    // }, [profile])
 
     const experiences = profile.experience.map((exp) => (
         <tr key={exp._id}>

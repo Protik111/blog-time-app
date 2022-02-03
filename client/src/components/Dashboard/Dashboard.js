@@ -71,11 +71,7 @@ const Dashboard = () => {
             {
                 post.length > 0 ? (<ViewPost></ViewPost>): (<TotalPosts></TotalPosts>)
             }
-            {/* {
-                post !== null ? (<ViewPost></ViewPost>) : (<TotalPosts></TotalPosts>)
-            } */}
             {/* <TotalPosts></TotalPosts> */}
-            
         </div>
     );
 };
