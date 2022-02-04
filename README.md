@@ -15,7 +15,7 @@
   <li>A Reader can see whose blogs it is and also see total love reacts, comments.</li>
   <li>Public user cannot perform comment and react without being logged in.</li>
   <li>A reader can sign up and sign in.</li>
-  <li>Authentican and Authorization has added with JWT.</li>
+  <li>Authentication and Authorization has added with JWT.</li>
   <li>User can create his/her profile after login/signup.</li>
   <li>User can update his profile.</li>
   <li>User can add, update, delete his/her experience.</li>
